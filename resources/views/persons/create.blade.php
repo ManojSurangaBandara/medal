@@ -39,7 +39,8 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="row g-3 align-items-end">
+                        <div class="col-md-6">
                             <label for="">Regiment: </label>
                             <select name="regiment_id" id="regiment_id" class="form-control" required>
                                 @foreach ($regiment as $regiment)
@@ -47,7 +48,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-6">
                             <label for="">Unit: </label>
                             <select name="unit_id" id="unit_id" class="form-control" required>
                                 @foreach ($unit as $unit)
@@ -55,18 +56,21 @@
                                 @endforeach
                             </select>
                         </div>
+                        </div>
                      
                         <div class="mb-3">
                             <label for="">Name:</label>
                             <input type="text" name="name" required class="form-control"/>
                         </div>
-                        <div class="mb-3">
+                        <div class="row g-3 align-items-end">
+                        <div class="col-md-6">
                             <label for="">Data of enlishment: </label>
                             <input type="date" name="date_of_enlishment" required class="form-control"/>
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-6">
                             <label for="">Data of commision: </label>
                             <input type="date" name="date_of_commision" required class="form-control"/>
+                        </div>
                         </div>
 
               
