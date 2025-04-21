@@ -18,7 +18,7 @@ class Rtype extends Model
 
     public function person()
     {
-        return $this->hasmany(Person::class);
+        return $this->hasMany(Person::class);
     }
 
 

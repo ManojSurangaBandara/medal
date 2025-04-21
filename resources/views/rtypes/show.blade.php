@@ -24,10 +24,10 @@
                        
                         
                         <li class="list-group-item">
-                            <strong>Created At:</strong> {{ $unit->created_at->format('d-m-Y H:i') }}
+                            <strong>Created At:</strong> {{ $rtype->created_at->format('d-m-Y H:i') }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Last Updated:</strong> {{ $unit->updated_at->format('d-m-Y H:i') }}
+                            <strong>Last Updated:</strong> {{ $rtype->updated_at->format('d-m-Y H:i') }}
                         </li>
                     </ul>
                 </div>
