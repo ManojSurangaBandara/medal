@@ -12,6 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AddmedalController;
 use App\Http\Controllers\MultipleController;
+use App\Http\Controllers\RtypeController;
 
 
 
@@ -45,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('persons', PersonController::class);
     Route::resource('addmedals', AddmedalController::class);
     Route::resource('multiples', MultipleController::class);
+    Route::resource('rtypes', RtypeController::class);
+
 
 
 

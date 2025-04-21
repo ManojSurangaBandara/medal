@@ -23,14 +23,13 @@
                 <div class="card-body">
                     <form action="{{ route('addmedals.store') }}" method="POST">
                         @csrf
+                       
                         <div class="mb-3">
-                            <label for="">Referance Type:</label>
-                            <select name="" id="" class="form-control" required>
-                                <option value="">--Select a type--</option>
-                                <option value="Special A/O" {{ old(key:'referance_type') == 'Special A/O' ? 'selected': ''}}>Special A/O</option>
-                                <option value="A/O" {{ old(key:'referance_type') == 'A/O' ? 'selected': ''}}>A/O</option>
-                                <option value="Gazette" {{ old(key:'referance_type') == 'Gazette' ? 'selected': ''}}>Gazette</option>
-
+                            <label for="">Referance Type: </label>
+                            <select name="rtype_id" id="rtype_id" class="form-control" required>
+                                @foreach ($rtype as $rtype)
+                                    <option value="{{ $rtype->id }}">{{ $rtype->rtype }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">

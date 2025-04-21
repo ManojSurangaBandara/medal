@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Unit;
+use App\Models\Rtype;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,26 +12,26 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UnitsDataTable extends DataTable
+class RtypesDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
      *
-     * @param QueryBuilder<Unit> $query Results from query() method.
+     * @param QueryBuilder<rtype> $query Results from query() method.
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
         ->addIndexColumn()
-        ->addColumn('action', function ($unitsdatatable) {
-            $btn = '<a href="'.route('units.edit',$unitsdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-            $btn .= '<form  action="' . route('units.destroy', $unitsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+        ->addColumn('action', function ($rtypesdatatable) {
+            $btn = '<a href="'.route('rtypes.edit',$rtypesdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+            $btn .= '<form  action="' . route('rtypes.destroy', $rtypesdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
                             ' . csrf_field() . '
                                 ' . method_field("DELETE") . '
                             <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
                             <i class="fa fa-trash-alt"></i></button>
                             </form> </div>';
-            $btn .= '<a href="'.route('units.show', $unitsdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+            $btn .= '<a href="'.route('rtypes.show', $rtypesdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
             return $btn;
         })
         ->rawColumns([ 'action']);
@@ -40,11 +40,11 @@ class UnitsDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      *
-     * @return QueryBuilder<Unit>
+     * @return QueryBuilder<Rtype>
      */
-    public function query(Unit $model): QueryBuilder
+    public function query(Rtype $model): QueryBuilder
     {
-        return $model->newQuery()->with('regiments');
+        return $model->newQuery();
     }
 
     /**
@@ -53,7 +53,7 @@ class UnitsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('units-table')
+                    ->setTableId('rtypes-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->orderBy(1)
@@ -79,11 +79,11 @@ class UnitsDataTable extends DataTable
             
             // Column::make('id'),
             
-            Column::make('unit'),
+            Column::make('rtype'),
            
           
 
-            Column::make('regiments.regiment')->title('Regiment')->data('regiments.regiment')->searchable(true),
+           
 
             // Column::make('created_at'),
             // Column::make('updated_at'),

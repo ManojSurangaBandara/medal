@@ -14,10 +14,10 @@
             @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Unit') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Rtype') }}</div>
                 
                 <div class="card-body">
-                    <a href="{{ route('units.create') }}" class="btn btn-primary float-end">Add New Unit</a>
+                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-end">Add New Rtype</a>
                     
                     {{-- <table class="table table-bordered table-striped">
                         <thead>

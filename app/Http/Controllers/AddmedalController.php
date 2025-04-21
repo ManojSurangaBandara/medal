@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Person;
 use App\Models\Medal;  // Import Location Model
+use App\Models\Rtype;  // Import Location Model
 
 // use App\Models\Rank;
 // use App\Models\Unit;
@@ -35,10 +36,10 @@ class AddmedalController extends Controller
         // $regiment = Regiment::all();
      
         // $rank = Rank::all();
-        // $unit = Unit::all();
+        $rtype = Rtype::all();
         $medal =Medal::all();
 
-        return view('addmedals.create',compact('medal'));
+        return view('addmedals.create',compact('medal','rtype'));
         
     }
 
