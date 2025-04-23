@@ -299,104 +299,111 @@ return [
     */
 
     'menu' => [
-      
+
         [
             'text' => 'Dashboard',
             'url' => 'home',
             'icon' => 'fas fa-th text-yellow',
-           
-        ],
-       
-        
-    [
-        'text' => 'Person Management',
-        'icon' => 'fa fa fa- fa-user-plus text-blue',
-        'submenu' => [
-        [
-        'text' => 'Add Person',
-        'url' => 'persons/create',
-        'icon' =>'far fa-circle nav-icon text-blue',
-        
-       
-        ],
-        
-    ],    
-],
 
-[
-    'text' => 'Medal Management',
-    'icon' => 'fa fa fa- fa-tasks text-orange',
-    'submenu' => [
-    [
-    'text' => 'Add Medal',
-    'url' => 'addmedals/create',
-    'icon' =>'far fa-circle nav-icon text-orange',
-    
-   
-    ],
-    [
-    'text' => 'Person Has Multiple Reference',
-    'url' => 'multiples/create', 
-    'icon' =>'far fa-circle nav-icon text-orange',   
-    ],
-    
-],    
-],
-[
-    'text' => 'User Management',
-    'icon' => 'fa fa fa- fa-users text-teal',
-    'submenu' => [
-    [
-    'text' => 'Users',
-    'url' => 'users',
-    'icon' =>'far fa-circle nav-icon text-teal',
-    ],
-    [
-        'text' => 'Permissions',
-        'url' => 'permissions',
-        'icon' =>'far fa-circle nav-icon text-teal',
         ],
-    [
-        'text' => 'Roles',
-        'url' => 'roles',
-        'icon' =>'far fa-circle nav-icon text-teal',
+
+
+        [
+            'text' => 'Person Management',
+            'icon' => 'fa fa fa- fa-user-plus text-blue',
+            'submenu' => [
+                [
+                    'text' => 'All Persons',
+                    'url' => 'persons',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+
+
+                ],
+                [
+                    'text' => 'Add Person',
+                    'url' => 'persons/create',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+
+
+                ],
+
+            ],
         ],
-    ],
-],
-[
-    'text' => 'Master Data',
-    'icon' => 'fa fa fa- fa-cog text-blue',
-    'submenu' => [
-    [
-    'text' => 'Rank',
-    'url' => 'ranks',
-    'icon' =>'far fa-circle nav-icon text-blue',
-    
-   
-    ],
-    [
-    'text' => 'Regiment',
-    'url' => 'regiments', 
-    'icon' =>'far fa-circle nav-icon text-blue',   
-    ],
-    [
-        'text' => 'Unit',
-        'url' => 'units',
-        'icon' =>'far fa-circle nav-icon text-blue',
-    ],
-    [
-        'text' => 'Medal',
-        'url' => 'medals',
-        'icon' =>'far fa-circle nav-icon text-blue',
-    ],
-    [
-        'text' => 'Referance Type',
-        'url' => 'rtypes',
-        'icon' =>'far fa-circle nav-icon text-blue',
-    ],
-],    
-],
-        
+
+        [
+            'text' => 'Medal Management',
+            'icon' => 'fa fa fa- fa-tasks text-orange',
+            'submenu' => [
+                [
+                    'text' => 'Add Medal',
+                    'url' => 'addmedals/create',
+                    'icon' => 'far fa-circle nav-icon text-orange',
+
+
+                ],
+                [
+                    'text' => 'Person Has Multiple Reference',
+                    'url' => 'multiples/create',
+                    'icon' => 'far fa-circle nav-icon text-orange',
+                ],
+
+            ],
+        ],
+        [
+            'text' => 'User Management',
+            'icon' => 'fa fa fa- fa-users text-teal',
+            'submenu' => [
+                [
+                    'text' => 'Users',
+                    'url' => 'users',
+                    'icon' => 'far fa-circle nav-icon text-teal',
+                ],
+                [
+                    'text' => 'Permissions',
+                    'url' => 'permissions',
+                    'icon' => 'far fa-circle nav-icon text-teal',
+                ],
+                [
+                    'text' => 'Roles',
+                    'url' => 'roles',
+                    'icon' => 'far fa-circle nav-icon text-teal',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Master Data',
+            'icon' => 'fa fa fa- fa-cog text-blue',
+            'submenu' => [
+                [
+                    'text' => 'Rank',
+                    'url' => 'ranks',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+
+
+                ],
+                [
+                    'text' => 'Regiment',
+                    'url' => 'regiments',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
+                [
+                    'text' => 'Unit',
+                    'url' => 'units',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
+                [
+                    'text' => 'Medal',
+                    'url' => 'medals',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
+                [
+                    'text' => 'Referance Type',
+                    'url' => 'rtypes',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
+            ],
+        ],
+
     ],
 
     /*

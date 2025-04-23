@@ -24,41 +24,42 @@
                 <div class="card card-teal">
                 <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' Add Person') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('persons.store') }}" method="POST">
+                    <form action="{{ route('persons.update', $person->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
                             <label for="">Service No:</label>
-                            <input type="text" name="service_no" required class="form-control" id="service_no"/>
+                            <input type="text" name="service_no" required class="form-control" id="service_no" value="{{$person->service_no}}"/>
                         </div>
                         <div class="mb-3">
                             <label for="">E No:</label>
-                            <input type="text" name="eno" required class="form-control" id="eno"/>
+                            <input type="text" name="eno" required class="form-control" id="eno" value="{{$person->eno}}"/>
                         </div>
                         <div class="mb-3">
-                            <label for="">Rank: </label>
+                            <label for="">Rank:</label>
                             <select name="rank_id" id="rank_id" class="form-control" required>
-                                @foreach ($rank as $rank)
-                                    <option value="{{ $rank->id }}">{{ $rank->name }}</option>
+                                @foreach ($ranks as $rank)
+                                    <option value="{{ $rank->id }}" @if($rank->id == $person->rank->id) selected @endif>{{ $rank->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="">Name:</label>
-                            <input type="text" name="name" required class="form-control" id="name"/>
+                            <input type="text" name="name" required class="form-control" id="name" value="{{$person->name}}"/>
                         </div>
                         <div class="mb-3">
                             <label for="">Regiment: </label>
                             <select name="regiment_id" id="regiment_id" class="form-control" required>
-                                @foreach ($regiment as $regiment)
-                                    <option value="{{ $regiment->id }}">{{ $regiment->regiment }}</option>
+                                @foreach ($regiments as $regiment)
+                                    <option value="{{ $regiment->id }}" @if($regiment->id == $person->regiment->id) selected @endif>{{ $regiment->regiment }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="">Unit: </label>
                             <select name="unit_id" id="unit_id" class="form-control" required>
-                                @foreach ($unit as $unit)
-                                    <option value="{{ $unit->id }}">{{ $unit->unit }}</option>
+                                @foreach ($units as $unit)
+                                    <option value="{{ $unit->id }}" @if($unit->id == $person->unit->id) selected @endif>{{ $unit->unit }}</option>
                                 @endforeach
                             </select>
                         </div>

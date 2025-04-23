@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\DataTables\PersonDataTable;
 use App\Models\Person;
 use App\Models\Regiment;  // Import Location Model
 
@@ -23,64 +25,76 @@ class PersonController extends Controller
     //     $this->middleware('permission:delete_users')->only('destroy');
 
     // }
-   
-    public function index()
+
+    public function index(PersonDataTable $dataTable)
     {
-        
-        // return $dataTable->render('users.index');
+        return $dataTable->render('persons.index');
     }
 
     public function create()
     {
         $regiment = Regiment::all();
-     
+
         $rank = Rank::all();
         $unit = Unit::all();
 
         return view('persons.create', compact('regiment','rank','unit'));
-        
     }
 
     public function store(Request $request)
     {
-       
-            
+
         $validated = $request->validate([
-        'service_no' => 'required|string|max:255',
-        'e_no' => 'required|string|max:255',
-        'name' => 'required|string|max:255',
-            'regiment_id' => ['required', 'numeric'],
-            'rank_id' => ['required', 'numeric'],
-            'unit_id' => ['required', 'numeric'],
-            'date_of_enlishment'=>'required|date',
-            'date_of_commision'=>'required|date',
-            
+            'service_no' => 'required|string|max:255',
+            'eno' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'rank_id' => 'required|numeric',
+            'regiment_id' => 'required|numeric',
+            'unit_id' => 'required|numeric',
         ]);
-    
+
         $person = Person::create($validated);
 
-
-        return redirect()->route('persons.create');
+        return redirect()->route('persons.index')->with('success', 'Person created successfully.');
     }
 
     public function show()
     {
-        
-    }
-    
 
-    public function edit()
-    {
-       
     }
 
-    public function update()
+
+    public function edit(Person $person)
     {
-        
+        $regiments = Regiment::all();
+
+        $ranks = Rank::all();
+        $units = Unit::all();
+
+        return view('persons.edit', compact('regiments','ranks','units', 'person'));
     }
 
-    public function destroy()
+    public function update(Request $request, Person $person)
     {
-       
+        $validated = $request->validate([
+            'service_no' => 'required|string|max:255',
+            'eno' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'rank_id' => 'required|numeric',
+            'regiment_id' => 'required|numeric',
+            'unit_id' => 'required|numeric',
+        ]);
+
+        // $person = Person::findOrFail($id);
+        $person->update($validated);
+
+        return redirect()->route('persons.index')->with('success', 'Person updated successfully.');
     }
+
+    public function destroy(Person $person)
+    {
+        $person->delete();
+        return redirect()->route('persons.index')->with('success', 'Person deleted successfully.');
+    }
+
 }
