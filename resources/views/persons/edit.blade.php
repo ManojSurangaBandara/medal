@@ -48,6 +48,8 @@
                             <input type="text" name="name" required class="form-control" id="name" value="{{$person->name}}"/>
                         </div>
                         <div class="mb-3">
+                        <div class="row g-3 align-items-end">
+                        <div class="col-md-6">
                             <label for="">Regiment: </label>
                             <select name="regiment_id" id="regiment_id" class="form-control" required>
                                 @foreach ($regiments as $regiment)
@@ -55,7 +57,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-6">
                             <label for="">Unit: </label>
                             <select name="unit_id" id="unit_id" class="form-control" required>
                                 @foreach ($units as $unit)
@@ -74,7 +76,8 @@
                             <input type="date" name="date_of_commision" required class="form-control"/>
                         </div> --}}
 
-
+                    </div>
+                </div>
 
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
