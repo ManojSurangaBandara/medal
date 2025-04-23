@@ -45,12 +45,14 @@ class PersonController extends Controller
     {
 
         $validated = $request->validate([
-            'service_no' => 'required|string|max:255',
+            'service_no' => 'required|string|max:255|unique:persons,service_no',
             'eno' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'rank_id' => 'required|numeric',
             'regiment_id' => 'required|numeric',
             'unit_id' => 'required|numeric',
+        ], [
+            'service_no.unique' => 'Person already added.',
         ]);
 
         $person = Person::create($validated);
