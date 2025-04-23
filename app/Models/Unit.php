@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Unit extends Model
 {
     use SoftDeletes;
+    protected $table = 'units';
     protected $fillable = [
-        'unit', 
+        'unit',
         'regiment_id'
-         
+
     ];
 
     public function user()

@@ -19,18 +19,18 @@ class Person extends Authenticatable
      *
      * @var list<string>
      */
+
+    protected $table = 'persons';
     protected $fillable = [
             'id',
             'service_no',
-            'e_no',
+            'eno',
             'name',
             'created_at',
             'updated_at',
             'regiment_id',
             'rank_id',
             'unit_id',
-            'date_of_enlishment',
-            'date_of_commision',
     ];
 
     /**
@@ -39,7 +39,7 @@ class Person extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-      
+
     ];
 
     /**
@@ -50,21 +50,21 @@ class Person extends Authenticatable
     protected function casts(): array
     {
         return [
-            
+
         ];
     }
 
-    public function ranks()
+    public function rank()
     {
         return $this->belongsTo(Rank::class, 'rank_id');
     }
 
-    public function regiments()
+    public function regiment()
     {
         return $this->belongsTo(Regiment::class, 'regiment_id');
     }
 
-    public function units()
+    public function unit()
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }

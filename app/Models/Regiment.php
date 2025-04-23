@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Regiment extends Model
 {
     use SoftDeletes;
-    
+
+    protected $table = 'regiments';
     protected $fillable = [
-        'regiment', 
-         
+        'regiment',
+
     ];
 
     public function user()

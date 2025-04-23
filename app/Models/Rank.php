@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Rank extends Model
 {
     use SoftDeletes;
+
+    protected $table = 'ranks';
     protected $fillable = [
-        'name', 
-         
+        'name',
+
     ];
 
 
-    
+
     public function user()
     {
         return $this->hasmany(User::class);
@@ -24,5 +26,5 @@ class Rank extends Model
         return $this->hasmany(person::class);
     }
 
-    
+
 }

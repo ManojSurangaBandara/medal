@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Medal extends Model
 {
     use SoftDeletes;
+
+    protected $table = 'medals';
     protected $fillable = [
-        'name', 
-         
+        'name',
+
     ];
 }
