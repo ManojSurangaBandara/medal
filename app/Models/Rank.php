@@ -19,11 +19,11 @@ class Rank extends Model
 
     public function user()
     {
-        return $this->hasmany(User::class);
+        return $this->hasMany(User::class);
     }
     public function person()
     {
-        return $this->hasmany(person::class);
+        return $this->hasMany(person::class);
     }
 
 

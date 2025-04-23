@@ -1,85 +1,85 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Unit;
-use App\Models\Regiment;
-use App\DataTables\UnitsDataTable;
+use App\Models\Person;
+use App\Models\Rtype;
+
+use App\DataTables\RtypesDataTable;
 
 use Illuminate\Http\Request;
 
-class UnitController extends Controller
+class RtypeController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:view_units')->only('index', 'show');
-    //     $this->middleware('permission:create_units')->only('create', 'store');
-    //     $this->middleware('permission:edit_units')->only('edit', 'update');
-    //     $this->middleware('permission:delete_units')->only('destroy');
+    public function __construct()
+    {
+        $this->middleware('permission:view_rtypes')->only('index', 'show');
+        $this->middleware('permission:create_rtypes')->only('create', 'store');
+        $this->middleware('permission:edit_rtypes')->only('edit', 'update');
+        $this->middleware('permission:delete_rtypes')->only('destroy');
 
-    // }
+    }
     // public function index()
     // {
     //     $units = Unit::all();
     //     return view('units.index', compact('units'));
     // }
-    public function index(UnitsDataTable $dataTable)
+    public function index(RtypesDataTable $dataTable)
     {
         
-        return $dataTable->render('units.index');
+        return $dataTable->render('rtypes.index');
     }
 
     public function create()
     {
-        $regiment = Regiment::all();
-        return view('units.create',compact('regiment'));
+        
+        return view('rtypes.create');
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             
-            'unit' => 'required|string|max:255',
-            'regiment_id' => ['required', 'numeric'],
+            'rtype' => 'required|string|max:255',
+            
                
             ]);
         
            
-            $unit = Unit::create($validated);
+            $rtype = Rtype::create($validated);
     
 
         // Unit::create($request->all());
-        return redirect()->route('units.index');
+        return redirect()->route('rtypes.index');
     }
 
-    public function show(Unit $unit)
+    public function show(Rtype $rtype)
 {
-    return view('units.show', compact('unit'));
+    return view('rtypes.show', compact('rtype'));
 }
 
-    public function edit(Unit $unit)
+    public function edit(Rtype $rtype)
     {
-        $regiment = Regiment::all();
-
-        return view('units.edit', compact('unit','regiment'));
+       
+        return view('rtypes.edit', compact('rtype'));
     }
 
-    public function update(Request $request, Unit $unit)
+    public function update(Request $request, Rtype $rtype)
     {
         $user_detail = $request->validate([
             
-            'unit' => 'required|string|max:255',
-            'regiment_id' => ['required', 'numeric'],
+            'rtype' => 'required|string|max:255',
+            
            
         ]);
 
-        $unit->update($user_detail);
+        $rtype->update($user_detail);
         // $unit->update($request->all());
-        return redirect()->route('units.index');
+        return redirect()->route('rtypes.index');
     }
 
-    public function destroy(Unit $unit)
+    public function destroy(Rtype $rtype)
     {
         $unit->delete();
-        return redirect()->route('units.index');
+        return redirect()->route('rtypes.index');
     }
 }

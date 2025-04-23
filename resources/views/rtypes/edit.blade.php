@@ -10,22 +10,15 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Edit Unit') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Edit Rtype') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('units.update', $unit->id) }}" method="POST">
+                    <form action="{{ route('rtypes.update', $rtype->id) }}" method="POST">
                         @csrf
                         @method('PUT')
+                      
                         <div class="mb-3">
-                            <label for="">Regiment: </label>
-                            <select name="regiment_id" id="regiment_id" class="form-control" required>
-                                @foreach ($regiment as $regiment)
-                                    <option value="{{ $regiment->id }}">{{ $regiment->regiment }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Unit:</label>
-                            <input type="text" name="unit" id="unit" class="form-control" value="{{ old('unit', $unit->unit) }}" required>
+                            <label for="">Referance Type:</label>
+                            <input type="text" name="rtype" id="rtype" class="form-control" value="{{ old('rtype', $rtype->rtype) }}" required>
 
                         </div>
                       

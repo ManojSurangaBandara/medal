@@ -26,6 +26,6 @@ class Regiment extends Model
     }
      public function units()
     {
-        return $this->hasmany(Unit::class, 'unit_id');
+        return $this->hasMany(Unit::class, 'unit_id');
     }
 }

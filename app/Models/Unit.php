@@ -18,12 +18,12 @@ class Unit extends Model
 
     public function user()
     {
-        return $this->hasmany(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function person()
     {
-        return $this->hasmany(Person::class);
+        return $this->hasMany(Person::class);
     }
 
     public function regiments()

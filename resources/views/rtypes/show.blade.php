@@ -10,26 +10,24 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' View Unit') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' View Rtype') }}</div>
             <div class="card">
-                <div class="card-header"><strong>{{ $unit->name }}</strong>
+                <div class="card-header"><strong>{{ $rtype->rtype }}</strong>
                 </div>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
+                        
                         <li class="list-group-item">
-                            <strong>Regiment:</strong> {{ $unit->regiment->regiment }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Unit:</strong> {{ $unit->unit }}
+                            <strong>Referance Type:</strong> {{ $rtype->rtype }}
                         </li>
                        
                         
                         <li class="list-group-item">
-                            <strong>Created At:</strong> {{ $unit->created_at->format('d-m-Y H:i') }}
+                            <strong>Created At:</strong> {{ $rtype->created_at->format('d-m-Y H:i') }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Last Updated:</strong> {{ $unit->updated_at->format('d-m-Y H:i') }}
+                            <strong>Last Updated:</strong> {{ $rtype->updated_at->format('d-m-Y H:i') }}
                         </li>
                     </ul>
                 </div>
