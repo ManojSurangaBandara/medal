@@ -319,19 +319,19 @@ return [
 
 
                 ],
-                [
-                    'text' => 'Add Person',
-                    'url' => 'persons/create',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                // [
+                //     'text' => 'Add Person',
+                //     'url' => 'persons/create',
+                //     'icon' => 'far fa-circle nav-icon text-blue',
 
 
-                ],
+                // ],
 
             ],
         ],
 
         [
-            'text' => 'Medal Management',
+            'text' => 'Medal Profile Management',
             'icon' => 'fa fa fa- fa-tasks text-orange',
             'submenu' => [
                 [
@@ -349,6 +349,7 @@ return [
 
             ],
         ],
+       
         [
             'text' => 'User Management',
             'icon' => 'fa fa fa- fa-users text-teal',
