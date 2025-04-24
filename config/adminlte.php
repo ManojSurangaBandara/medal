@@ -402,6 +402,11 @@ return [
                     'url' => 'rtypes',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
+                [
+                    'text' => 'Reference',
+                    'url' => 'references',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
             ],
         ],
 
