@@ -336,7 +336,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Add Medal',
-                    'url' => 'addmedals/create',
+                    'url' => 'addmedals',
                     'icon' => 'far fa-circle nav-icon text-orange',
 
 
