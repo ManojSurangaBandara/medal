@@ -49,3 +49,4 @@ class Reference extends Authenticatable
 
         ];
     }
+}
