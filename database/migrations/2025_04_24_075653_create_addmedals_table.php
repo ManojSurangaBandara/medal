@@ -17,12 +17,13 @@ return new class extends Migration
             $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade'); // Define the action on delete
             $table->unsignedBigInteger('medal_id')->nullable(); // Use appropriate type
             $table->foreign('medal_id')->references('id')->on('medals')->onDelete('cascade'); // Define the action on delete
-            $table->unsignedBigInteger('referance_id')->nullable(); // Use appropriate type
-            $table->foreign('referance_id')->references('id')->on('referances')->onDelete('cascade'); // Define the action on delete
+            $table->unsignedBigInteger('reference_id')->nullable(); // Use appropriate type
+            $table->foreign('reference_id')->references('id')->on('references')->onDelete('cascade'); // Define the action on delete
+            
             $table->unsignedBigInteger('rtype_id')->nullable(); // Use appropriate type
             $table->foreign('rtype_id')->references('id')->on('rtypes')->onDelete('cascade'); // Define the action on delete
-            $table->date();
-            $table->file();
+            $table->date('awarded_on'); 
+            $table->text('file_path'); 
             $table->timestamps();
         });
     }

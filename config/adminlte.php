@@ -398,7 +398,7 @@ return [
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
                 [
-                    'text' => 'Referance Type',
+                    'text' => 'Reference Type',
                     'url' => 'rtypes',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],

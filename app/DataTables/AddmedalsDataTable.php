@@ -84,7 +84,7 @@ class AddmedalsDataTable extends DataTable
             Column::make('medal.name')->title('Medal')->data('medal.name')->searchable(true),
 
             // Column::make('id'),
-            Column::make('referance.referance')->title('Referance No')->data('referance.referance')->searchable(true),
+            Column::make('reference.referance')->title('Reference No')->data('reference.reference')->searchable(true),
             Column::make('rtype.name')->title('Referance Type')->data('rtype.name')->searchable(true),
             Column::make('date'),
             Column::make('file'),

@@ -41,16 +41,16 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="">Referance No: </label>
-                            <select name="referance_id" id="referance_id" class="form-control" required>
-                                @foreach ($referance as $referance)
-                                    <option value="{{ $referance->id }}">{{ $referance->referance }}</option>
+                            <label for="">Reference No: </label>
+                            <select name="reference_id" id="reference_id" class="form-control" required>
+                                @foreach ($reference as $reference)
+                                    <option value="{{ $reference->id }}">{{ $reference->reference }}</option>
                                 @endforeach
                             </select>
                         </div>
                      
                         <div class="mb-3">
-                            <label for="">Referance Type: </label>
+                            <label for="">Reference Type: </label>
                             <select name="rtype_id" id="rtype_id" class="form-control" required>
                                 @foreach ($rtype as $rtype)
                                     <option value="{{ $rtype->id }}">{{ $rtype->rtype }}</option>

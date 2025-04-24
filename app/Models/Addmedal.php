@@ -23,7 +23,7 @@ class Addmedal extends Authenticatable
             'id',
             'person_id',
             'medal_id',
-            'referance_id',
+            'reference_id',
             'rtype_id',
             'date',
             'file',

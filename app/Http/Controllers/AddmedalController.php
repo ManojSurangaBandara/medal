@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use App\Models\Medal;  // Import Location Model
 use App\Models\Rtype;
-use App\Models\Referance;
+use App\Models\Reference;
 use App\DataTables\AddmedalsDataTable;  // Import Location Model
 
 // use App\Models\Rank;
@@ -40,10 +40,10 @@ class AddmedalController extends Controller
         $person = Person::all();
         $rtype = Rtype::all();
         $medal =Medal::all();
-        $referance = Referance::all();
+        $reference = Reference::all();
 
 
-        return view('addmedals.create',compact('medal','rtype','person','referance'));
+        return view('addmedals.create',compact('medal','rtype','person','reference'));
         
     }
 
@@ -54,7 +54,7 @@ class AddmedalController extends Controller
         $validated = $request->validate([
             'person_id' => ['required', 'numeric'],
         'rtype_id' => ['required', 'numeric'],
-        'referance_id' => ['required', 'numeric'],
+        'reference_id' => ['required', 'numeric'],
         'file' => 'required|file|pdf',
             'medal_id' => ['required', 'numeric'],
             'date' =>'date',
@@ -80,8 +80,8 @@ class AddmedalController extends Controller
         $person = Person::all();
         $rtype = Rtype::all();
         $medal =Medal::all();
-        $referance = Referance::all();
-        return view('addmedals.edit', compact('person','trype','medal','referance'));
+        $reference = Reference::all();
+        return view('addmedals.edit', compact('person','trype','medal','reference'));
     }
 
     public function update(Request $request, Addmedal $addmedal)
@@ -89,7 +89,7 @@ class AddmedalController extends Controller
         $user_detail = $request->validate([
             'person_id' =>  ['required', 'numeric'],
             'rtype_id' =>  ['required', 'numeric'],
-            'referance_id' =>  ['required', 'numeric'],
+            'reference_id' =>  ['required', 'numeric'],
             'file' => 'required|file|pdf',
                 'medal_id' => ['required', 'numeric'],
                 'date' =>'date',

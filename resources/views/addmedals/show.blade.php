@@ -24,7 +24,7 @@
                             <strong>Medal:</strong> {{ $medal->name }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Referance No:</strong> {{ $addmedal->referance_no }}
+                            <strong>Reference No:</strong> {{ $addmedal->reference_no }}
                         </li>
                        
                         
