@@ -19,7 +19,7 @@
                     <ul class="list-group">
                         
                         <li class="list-group-item">
-                            <strong>Referance Type:</strong> {{ $rtype->rtype }}
+                            <strong>reference Type:</strong> {{ $rtype->rtype }}
                         </li>
                        
                         

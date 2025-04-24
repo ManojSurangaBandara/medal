@@ -17,7 +17,7 @@
                         @method('PUT')
                       
                         <div class="mb-3">
-                            <label for="">Referance Type:</label>
+                            <label for="">reference Type:</label>
                             <input type="text" name="rtype" id="rtype" class="form-control" value="{{ old('rtype', $rtype->rtype) }}" required>
 
                         </div>

@@ -47,7 +47,7 @@ class AddmedalsDataTable extends DataTable
         return $model->newQuery()->with([
             'person',
             'medal',
-        //    'referance',
+           'reference',
            
        ]);
     }
@@ -84,8 +84,8 @@ class AddmedalsDataTable extends DataTable
             Column::make('medal.name')->title('Medal')->data('medal.name')->searchable(true),
 
             // Column::make('id'),
-            Column::make('reference.referance')->title('Reference No')->data('reference.reference')->searchable(true),
-            Column::make('rtype.name')->title('Referance Type')->data('rtype.name')->searchable(true),
+            Column::make('reference.reference')->title('Reference No')->data('reference.reference')->searchable(true),
+            Column::make('rtype.name')->title('reference Type')->data('rtype.name')->searchable(true),
             Column::make('date'),
             Column::make('file'),
 

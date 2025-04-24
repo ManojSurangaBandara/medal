@@ -19,7 +19,7 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' Person has multiple referance') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' Person has multiple reference') }}</div>
                 <div class="card-body">
                     <form action="{{ route('multiples.store') }}" method="POST">
                         @csrf

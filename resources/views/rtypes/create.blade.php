@@ -20,7 +20,7 @@
                         @csrf
                      
                         <div class="mb-3">
-                            <label for="">Referance type:</label>
+                            <label for="">reference type:</label>
                             <input type="text" name="rtype" required class="form-control"/>
                         </div>
                        
