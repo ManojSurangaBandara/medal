@@ -25,28 +25,28 @@ class RtypeController extends Controller
     // }
     public function index(RtypesDataTable $dataTable)
     {
-        
+
         return $dataTable->render('rtypes.index');
     }
 
     public function create()
     {
-        
+
         return view('rtypes.create');
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            
+
             'rtype' => 'required|string|max:255',
-            
-               
+
+
             ]);
-        
-           
+
+
             $rtype = Rtype::create($validated);
-    
+
 
         // Unit::create($request->all());
         return redirect()->route('rtypes.index');
@@ -59,17 +59,17 @@ class RtypeController extends Controller
 
     public function edit(Rtype $rtype)
     {
-       
+
         return view('rtypes.edit', compact('rtype'));
     }
 
     public function update(Request $request, Rtype $rtype)
     {
         $user_detail = $request->validate([
-            
+
             'rtype' => 'required|string|max:255',
-            
-           
+
+
         ]);
 
         $rtype->update($user_detail);
@@ -79,7 +79,7 @@ class RtypeController extends Controller
 
     public function destroy(Rtype $rtype)
     {
-        $unit->delete();
+        $rtype->delete();
         return redirect()->route('rtypes.index');
     }
 }
