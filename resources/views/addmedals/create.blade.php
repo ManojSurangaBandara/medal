@@ -25,20 +25,12 @@
                         @csrf
                        
                         <div class="mb-3">
-                            <label for="">Referance Type: </label>
-                            <select name="rtype_id" id="rtype_id" class="form-control" required>
-                                @foreach ($rtype as $rtype)
-                                    <option value="{{ $rtype->id }}">{{ $rtype->rtype }}</option>
+                            <label for="">Person: </label>
+                            <select name="person_id" id="person_id" class="form-control" required>
+                                @foreach ($person as $person)
+                                    <option value="{{ $person->id }}">{{ $person->name }}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Referance No:</label>
-                            <input type="text" name="referance_no" required class="form-control"/>
-                        </div>
-                        <div class="mb-3">
-                            <label for="">File: </label>
-                           <input type="file" name="file" accept="file/pdf" required>
                         </div>
                         <div class="mb-3">
                             <label for="">Medal: </label>
@@ -48,6 +40,28 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="">Referance No:</label>
+                            <input type="text" name="referance_no" required class="form-control"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Referance Type: </label>
+                            <select name="rtype_id" id="rtype_id" class="form-control" required>
+                                @foreach ($rtype as $rtype)
+                                    <option value="{{ $rtype->id }}">{{ $rtype->rtype }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Date:</label>
+                            <input type="date" name="date" required class="form-control"/>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="">File: </label>
+                           <input type="file" name="file" accept="file/pdf" required>
+                        </div>
+                       
                                       
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>

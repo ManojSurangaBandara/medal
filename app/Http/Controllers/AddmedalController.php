@@ -35,11 +35,11 @@ class AddmedalController extends Controller
     {
         // $regiment = Regiment::all();
      
-        // $rank = Rank::all();
+        $person = Person::all();
         $rtype = Rtype::all();
         $medal =Medal::all();
 
-        return view('addmedals.create',compact('medal','rtype'));
+        return view('addmedals.create',compact('medal','rtype','person'));
         
     }
 
@@ -48,10 +48,12 @@ class AddmedalController extends Controller
        
             
         $validated = $request->validate([
+            'person_id' => 'required',
         'referance_type' => 'required',
         'referance_no' => 'required|string|max:255',
         'file' => 'required|file|pdf',
             'medal_id' => ['required', 'numeric'],
+            'date' =>'date',
             
             
         ]);
