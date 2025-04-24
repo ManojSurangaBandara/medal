@@ -4,29 +4,22 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' Add Medal') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Edit add medals') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('addmedals.store') }}" method="POST">
+                    <form action="{{ route('addmedals.update', $addmedal->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                        
+                        
                         <div class="mb-3">
                             <label for="">Person: </label>
-                            <select name="person_id" id="person_id" class="form-control" required>
+                            <select name="person_id" id="person_id" class="form-control" value="{{ old('person', $person->name) }}"required>
                                 @foreach ($person as $person)
                                     <option value="{{ $person->id }}">{{ $person->name }}</option>
                                 @endforeach
@@ -48,7 +41,6 @@
                                 @endforeach
                             </select>
                         </div>
-                     
                         <div class="mb-3">
                             <label for="">Referance Type: </label>
                             <select name="rtype_id" id="rtype_id" class="form-control" required>
@@ -66,13 +58,13 @@
                             <label for="">File: </label>
                            <input type="file" name="file" accept="file/pdf" required>
                         </div>
-                       
-                                      
+                      
+                      
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
-                    </form>
                         
+                    </form>
                 </div>
                 </div>
             </div>
@@ -83,4 +75,3 @@
 @endsection
      
                        
-

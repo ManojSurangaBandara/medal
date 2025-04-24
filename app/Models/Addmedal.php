@@ -21,9 +21,14 @@ class Addmedal extends Authenticatable
      */
     protected $fillable = [
             'id',
-            'referance_id',
-            'referance_no',
+            'person_id',
             'medal_id',
+            'referance_id',
+            'rtype_id',
+            'date',
+            'file',
+            
+            
             
     ];
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Person;
 use App\Models\Medal;  // Import Location Model
-use App\Models\Rtype;  // Import Location Model
+use App\Models\Rtype;
+use App\Models\Referance;
+use App\DataTables\AddmedalsDataTable;  // Import Location Model
 
 // use App\Models\Rank;
 // use App\Models\Unit;
@@ -25,10 +27,10 @@ class AddmedalController extends Controller
 
     // }
    
-    public function index()
+    public function index(AddmedalsDataTable $dataTable)
     {
         
-        // return $dataTable->render('users.index');
+        return $dataTable->render('addmedals.index');
     }
 
     public function create()
@@ -38,8 +40,10 @@ class AddmedalController extends Controller
         $person = Person::all();
         $rtype = Rtype::all();
         $medal =Medal::all();
+        $referance = Referance::all();
 
-        return view('addmedals.create',compact('medal','rtype','person'));
+
+        return view('addmedals.create',compact('medal','rtype','person','referance'));
         
     }
 
@@ -48,9 +52,9 @@ class AddmedalController extends Controller
        
             
         $validated = $request->validate([
-            'person_id' => 'required',
-        'referance_type' => 'required',
-        'referance_no' => 'required|string|max:255',
+            'person_id' => ['required', 'numeric'],
+        'rtype_id' => ['required', 'numeric'],
+        'referance_id' => ['required', 'numeric'],
         'file' => 'required|file|pdf',
             'medal_id' => ['required', 'numeric'],
             'date' =>'date',
@@ -64,24 +68,43 @@ class AddmedalController extends Controller
         return redirect()->route('addmedals.create');
     }
 
-    public function show()
+    public function show(Addmedal $addmedal)
     {
-        
+        return view('addmedals.show', compact('addmedal'));
     }
     
 
-    public function edit()
+    public function edit(Addmedal $addmedal)
     {
        
+        $person = Person::all();
+        $rtype = Rtype::all();
+        $medal =Medal::all();
+        $referance = Referance::all();
+        return view('addmedals.edit', compact('person','trype','medal','referance'));
     }
 
-    public function update()
+    public function update(Request $request, Addmedal $addmedal)
     {
+        $user_detail = $request->validate([
+            'person_id' =>  ['required', 'numeric'],
+            'rtype_id' =>  ['required', 'numeric'],
+            'referance_id' =>  ['required', 'numeric'],
+            'file' => 'required|file|pdf',
+                'medal_id' => ['required', 'numeric'],
+                'date' =>'date',
+        ]);
+
+        $user->update($user_detail);
+
         
+      
+        return redirect()->route('addmedals.index');
     }
 
-    public function destroy()
+    public function destroy(Addmedal $addmedal)
     {
-       
+        $addmedal->delete();
+        return redirect()->route('addmedals.index');
     }
 }
