@@ -57,7 +57,7 @@ class Addmedal extends Authenticatable
 
     public function person()
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Person::class,'person_id');
     }
 
     public function medal()

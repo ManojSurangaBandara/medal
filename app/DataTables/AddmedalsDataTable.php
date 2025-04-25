@@ -47,7 +47,9 @@ class AddmedalsDataTable extends DataTable
      */
     public function query(Addmedal $model): QueryBuilder
     {
-        return $model->newQuery()->with([
+        return $model->newQuery()
+        ->select('addmedals.*')
+        ->with([
             'person',
             'medal',
            'reference',
