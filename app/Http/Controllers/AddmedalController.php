@@ -56,7 +56,7 @@ class AddmedalController extends Controller
             'person_id' => ['required', 'numeric'],
         'rtype_id' => ['required', 'numeric'],
         'reference_id' => ['required', 'numeric'],
-            'file' => 'required|mimes:pdf',
+            'file' => 'required',
             'medal_id' => ['required', 'numeric'],
             'date' => 'required|date'            
             
@@ -86,14 +86,16 @@ class AddmedalController extends Controller
 
     public function update(Request $request, Addmedal $addmedal)
     {
+        
         $validated = $request->validate([
             'person_id' =>  ['required', 'numeric'],
             'rtype_id' =>  ['required', 'numeric'],
             'reference_id' =>  ['required', 'numeric'],
-            'file' => 'required|mimes:pdf',
+            'file' => 'required',
                 'medal_id' => ['required', 'numeric'],
                 'date' => 'required|date' ,
         ]);
+        
 
         $addmedal->update($validated);
 

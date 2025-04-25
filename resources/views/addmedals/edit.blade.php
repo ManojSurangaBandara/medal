@@ -4,6 +4,15 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
@@ -51,12 +60,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="">Date:</label>
-                            <input type="date" name="date" required class="form-control"/>
+                            <input type="date" name="date" required class="form-control"id="date" value="{{$addmedal->date}}"/>
                         </div>
                         
                         <div class="mb-3">
                             <label for="">File: </label>
-                           <input type="file" name="file" accept="file/pdf" required>
+                           <input type="file" name="file" accept="file/pdf" class="form-control" id="file" value="{{$addmedal->file}}"required>
                         </div>
                       
                       
