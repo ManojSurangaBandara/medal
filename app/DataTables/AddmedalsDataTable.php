@@ -55,7 +55,7 @@ class AddmedalsDataTable extends DataTable
            'reference',
            'rtype',
 
-       ]);
+            ]);
     }
 
     /**
