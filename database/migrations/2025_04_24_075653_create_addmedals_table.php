@@ -22,8 +22,8 @@ return new class extends Migration
             
             $table->unsignedBigInteger('rtype_id')->nullable(); // Use appropriate type
             $table->foreign('rtype_id')->references('id')->on('rtypes')->onDelete('cascade'); // Define the action on delete
-            $table->date('awarded_on'); 
-            $table->text('file_path'); 
+            $table->date('date')->nullable(); // Or remove nullable() if it's required
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

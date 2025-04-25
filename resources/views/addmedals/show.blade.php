@@ -21,10 +21,10 @@
                             <strong>Person:</strong> {{ $addmedal->person->name }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Medal:</strong> {{ $medal->name }}
+                            <strong>Medal:</strong> {{ $addmedal->medal->name }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Reference No:</strong> {{ $addmedal->reference_no }}
+                            <strong>Reference No:</strong> {{ $addmedal->reference->reference_no }}
                         </li>
                        
                         

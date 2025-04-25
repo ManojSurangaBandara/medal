@@ -20,6 +20,9 @@ class Rtype extends Model
     {
         return $this->hasMany(Person::class);
     }
+    public function addmedal(){
+        return $this->hasMany(Addmedal::class);
+    }
 
 
 

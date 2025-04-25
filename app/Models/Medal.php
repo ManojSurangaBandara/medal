@@ -14,4 +14,8 @@ class Medal extends Model
         'name',
 
     ];
+
+    public function addmedal(){
+        return $this->hasMany(Addmedal::class);
+    }
 }

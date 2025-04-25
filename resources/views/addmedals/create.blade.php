@@ -21,7 +21,7 @@
                 <div class="card card-teal">
                 <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' Add Medal') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('addmedals.store') }}" method="POST">
+                    <form action="{{ route('addmedals.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                        
                         <div class="mb-3">

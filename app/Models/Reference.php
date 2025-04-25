@@ -49,4 +49,8 @@ class Reference extends Authenticatable
 
         ];
     }
+
+    public function addmedal(){
+        return $this->hasMany(Addmedal::class);
+    }
 }

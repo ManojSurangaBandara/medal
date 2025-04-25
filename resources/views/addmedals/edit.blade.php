@@ -19,9 +19,9 @@
                         
                         <div class="mb-3">
                             <label for="">Person: </label>
-                            <select name="person_id" id="person_id" class="form-control" value="{{ old('person', $person->name) }}"required>
+                            <select name="person_id" id="person_id" class="form-control" required>
                                 @foreach ($person as $person)
-                                    <option value="{{ $person->id }}">{{ $person->name }}</option>
+                                    <option value="{{ $person->id }}" @if($person->id == $addmedal->person->id) selected @endif>{{ $person->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -29,7 +29,7 @@
                             <label for="">Medal: </label>
                             <select name="medal_id" id="medal_id" class="form-control" required>
                                 @foreach ($medal as $medal)
-                                    <option value="{{ $medal->id }}">{{ $medal->name }}</option>
+                                    <option value="{{ $medal->id }}" @if($medal->id == $addmedal->medal->id) selected @endif>{{ $medal->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -37,7 +37,7 @@
                             <label for="">Reference No: </label>
                             <select name="reference_id" id="reference_id" class="form-control" required>
                                 @foreach ($reference as $reference)
-                                    <option value="{{ $reference->id }}">{{ $reference->reference }}</option>
+                                    <option value="{{ $reference->id }}" @if($reference->id == $addmedal->reference->id) selected @endif>{{ $reference->reference }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -45,7 +45,7 @@
                             <label for="">Reference Type: </label>
                             <select name="rtype_id" id="rtype_id" class="form-control" required>
                                 @foreach ($rtype as $rtype)
-                                    <option value="{{ $rtype->id }}">{{ $rtype->rtype }}</option>
+                                    <option value="{{ $rtype->id }}" @if($rtype->id == $addmedal->rtype->id) selected @endif>{{ $rtype->rtype }}</option>
                                 @endforeach
                             </select>
                         </div>

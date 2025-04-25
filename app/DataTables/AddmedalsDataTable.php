@@ -48,6 +48,7 @@ class AddmedalsDataTable extends DataTable
             'person',
             'medal',
            'reference',
+           'rtype',
            
        ]);
     }
@@ -85,7 +86,7 @@ class AddmedalsDataTable extends DataTable
 
             // Column::make('id'),
             Column::make('reference.reference')->title('Reference No')->data('reference.reference')->searchable(true),
-            Column::make('rtype.name')->title('reference Type')->data('rtype.name')->searchable(true),
+            Column::make('rtype.rtype')->title('reference Type')->data('rtype.rtype')->searchable(true),
             Column::make('date'),
             Column::make('file'),
 

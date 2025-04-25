@@ -60,4 +60,23 @@ class Addmedal extends Authenticatable
         return $this->belongsTo(Person::class);
     }
 
+    public function medal()
+    {
+        return $this->belongsTo(Medal::class, 'medal_id');
+       
+
+    }
+    public function reference()
+    {
+        return $this->belongsTo(Reference::class, 'reference_id');
+       
+
+    }
+    public function rtype()
+    {
+        return $this->belongsTo(Rtype::class, 'rtype_id');
+       
+
+    }
+
 }

@@ -62,7 +62,7 @@ class PersonController extends Controller
 
     public function show()
     {
-
+        return view('persons.show', compact('person'));
     }
 
 
