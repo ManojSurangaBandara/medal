@@ -28,16 +28,16 @@ class AddmedalController extends Controller
     //     $this->middleware('permission:delete_users')->only('destroy');
 
     // }
-   
+
     public function index(AddmedalsDataTable $dataTable)
     {
-        
+
         return $dataTable->render('addmedals.index');
     }
 
     public function create()
     {
-             
+
         $person = Person::all();
         $rtype = Rtype::all();
         $medal =Medal::all();
@@ -45,23 +45,25 @@ class AddmedalController extends Controller
 
 
         return view('addmedals.create',compact('medal','rtype','person','reference'));
-        
+
     }
 
     public function store(Request $request)
     {
-       
-            
+
+
         $validated = $request->validate([
             'person_id' => ['required', 'numeric'],
         'rtype_id' => ['required', 'numeric'],
         'reference_id' => ['required', 'numeric'],
             'file' => 'required',
             'medal_id' => ['required', 'numeric'],
-            'date' => 'required|date'            
-            
+            'date' => 'required|date'
+
         ]);
-    
+
+        $path = $request->file('file')->store('medal_reference_files', 'public'); // stores in storage/app/private/medal_reference_files
+        $validated['file'] = $path; // save the stored path in DB
         $addmedal = Addmedal::create($validated);
 
 
@@ -72,11 +74,11 @@ class AddmedalController extends Controller
     {
         return view('addmedals.show', compact('addmedal'));
     }
-    
+
 
     public function edit(Addmedal $addmedal)
     {
-       
+
         $person = Person::all();
         $rtype = Rtype::all();
         $medal =Medal::all();
@@ -99,8 +101,8 @@ class AddmedalController extends Controller
 
         $addmedal->update($validated);
 
-        
-      
+
+
         return redirect()->route('addmedals.index')->with('success', 'Addmedal updated successfully.');
     }
 
