@@ -65,7 +65,7 @@
                         
                         <div class="mb-3">
                             <label for="">File: </label>
-                           <input type="file" name="file" accept="file/pdf" class="form-control" id="file" value="{{$addmedal->file}}"required>
+                           <input type="file" name="file" accept="application/pdf" class="form-control" id="file" value="{{$addmedal->file}}"required>
                         </div>
                       
                       

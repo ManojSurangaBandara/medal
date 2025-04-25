@@ -64,8 +64,9 @@
                         
                         <div class="mb-3">
                             <label for="">File: </label>
-                           <input type="file" name="file" accept="file/pdf" required>
+                           <input type="file" name="file" accept="application/pdf" required>
                         </div>
+                       
                        
                                       
                         <div class="mb-3">

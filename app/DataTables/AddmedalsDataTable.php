@@ -48,12 +48,12 @@ class AddmedalsDataTable extends DataTable
     public function query(Addmedal $model): QueryBuilder
     {
         return $model->newQuery()
-            ->select('addmedals.*') // ✅ ensures no field override from joined tables
-            ->with([
-                'person',
-                'medal',
-                'reference',
-                'rtype',
+        ->select('addmedals.*')
+        ->with([
+            'person',
+            'medal',
+           'reference',
+           'rtype',
 
             ]);
     }

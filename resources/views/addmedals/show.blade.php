@@ -24,7 +24,16 @@
                             <strong>Medal:</strong> {{ $addmedal->medal->name }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Reference No:</strong> {{ $addmedal->reference->reference_no }}
+                            <strong>Reference No:</strong> {{ $addmedal->reference->reference }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Reference Type:</strong> {{ $addmedal->rtype->rtype }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Date:</strong> {{ $addmedal->date }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>File:</strong> {{ $addmedal->file }}
                         </li>
                        
                         
