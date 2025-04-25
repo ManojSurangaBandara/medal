@@ -21,7 +21,7 @@
                             <strong>E No:</strong> {{ $person->eno }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Rank:</strong> {{ $unit->rank->name }}
+                            <strong>Rank:</strong> {{ $person->rank->name }}
                         </li>
                         <li class="list-group-item">
                             <strong>Name:</strong> {{ $person->name }}

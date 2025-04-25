@@ -60,7 +60,7 @@ class PersonController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person created successfully.');
     }
 
-    public function show()
+    public function show(Person $person)
     {
         return view('persons.show', compact('person'));
     }

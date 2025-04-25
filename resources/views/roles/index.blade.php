@@ -10,10 +10,10 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Roles') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Roles') }}                    <a href="{{ route('roles.create') }}" class="btn btn-primary float-right">Add New Role</a>
+                </div>
                 
                 <div class="card-body">
-                    <a href="{{ route('roles.create') }}" class="btn btn-primary float-end">Add New Role</a>
                     
                
 
