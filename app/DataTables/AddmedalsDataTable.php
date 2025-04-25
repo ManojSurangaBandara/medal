@@ -34,6 +34,7 @@ class AddmedalsDataTable extends DataTable
             $btn .= '<a href="'.route('addmedals.show', $addmedalsdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
             return $btn;
         })
+        
         ->rawColumns([ 'action']);
     }
 
