@@ -403,8 +403,8 @@ return [
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
                 [
-                    'text' => 'Reference',
-                    'url' => 'references',
+                    'text' => 'Medal Profile',
+                    'url' => 'medal_profiles',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
             ],
