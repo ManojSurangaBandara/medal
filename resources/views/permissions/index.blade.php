@@ -10,10 +10,10 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Permissions') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Permissions') }}<a href="{{ route('permissions.create') }}" class="btn btn-primary float-right">Add New Permission</a>
+                </div>
                 
                 <div class="card-body">
-                    <a href="{{ route('permissions.create') }}" class="btn btn-primary float-end">Add New Permission</a>
                     
                
 

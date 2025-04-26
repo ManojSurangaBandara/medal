@@ -42,9 +42,10 @@ class ReferenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Reference $reference)
     {
-        //
+        return view('references.show', compact('reference'));
+
     }
 
     /**

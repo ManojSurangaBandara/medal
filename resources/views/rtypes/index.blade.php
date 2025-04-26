@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,10 +14,10 @@
             @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Rtype') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Rtype') }}                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-right">Add New Rtype</a>
+                </div>
                 
                 <div class="card-body">
-                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-end">Add New Rtype</a>
                     
                     {{-- <table class="table table-bordered table-striped">
                         <thead>

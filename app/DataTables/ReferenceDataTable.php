@@ -31,6 +31,8 @@ class ReferenceDataTable extends DataTable
                             <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
                             <i class="fa fa-trash-alt"></i></button>
                             </form> </div>';
+                 $btn .= '<a href="'.route('references.show', $reference->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+
                 return $btn;
             })
             ->rawColumns(['action']);

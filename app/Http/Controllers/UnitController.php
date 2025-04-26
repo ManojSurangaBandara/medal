@@ -24,7 +24,8 @@ class UnitController extends Controller
     // }
     public function index(UnitsDataTable $dataTable)
     {
-        
+        // dd($dataTable);
+
         return $dataTable->render('units.index');
     }
 

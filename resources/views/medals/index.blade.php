@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,10 +14,10 @@
             @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Medal') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Medal') }}<a href="{{ route('medals.create') }}" class="btn btn-primary float-right">Add New Medal</a>
+                </div>
                 
                 <div class="card-body">
-                    <a href="{{ route('medals.create') }}" class="btn btn-primary float-end">Add New Medal</a>
                     
                     
             <div class="table-responsive">
