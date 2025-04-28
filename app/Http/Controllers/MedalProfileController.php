@@ -95,7 +95,6 @@ class MedalProfileController extends Controller
             // If no new file is uploaded, keep the existing file path
             unset($validated['file']);
         }
-        
 
         $medal_profile = MedalProfile::findOrFail($id);
         $medal_profile->update($validated);
@@ -113,4 +112,16 @@ class MedalProfileController extends Controller
 
         return redirect()->route('medal_profiles.index')->with('success', 'Medal Profile deleted successfully.');
     }
+
+    public function activate_medal_profile(string $id)
+    {
+        $medal_profile = MedalProfile::findOrFail($id);
+        $medal_profile->status = config('const.MEDAL_PROFILE_STATUS_ACTIVE_VALUE');
+        $medal_profile->save();
+
+        return redirect()->route('medal_profiles.index')->with('success', 'Medal Profile activated successfully.');
+    }
+
+
+
 }

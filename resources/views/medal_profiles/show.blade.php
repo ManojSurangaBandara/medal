@@ -58,8 +58,8 @@
 
 
                         <div class="mb-3">
-                            <strong>Status:</strong>
-                            <p>{{ $medal_profile->status }}</p>
+                            <strong>Medal:</strong>
+                            <p>{{ $medal_profile->medal->name }}</p>
                         </div>
 
                         <div class="mb-3">

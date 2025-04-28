@@ -8,64 +8,51 @@
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
+
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' View User') }}</div>
-            <div class="card">
-                <div class="card-header"><strong>{{ $user->name }}</strong>
-                </div></div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <strong>Service No:</strong> {{ $user->service_no }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Rank:</strong> {{ $user->ranks->name }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Name:</strong> {{ $user->name }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Email:</strong> {{ $user->email }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Regiment:</strong> {{ $user->regiments->regiment }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Unit:</strong> {{ $user->units->unit }}
-                        </li>
-                       
-                        <li class="list-group-item">
-                            <strong>Role:</strong> {{ $user->role->name }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Active:</strong> {{ $user->active }}
-                        </li>
-                        
-                        <li class="list-group-item">
-                            <strong>Created At:</strong> 
-                            {{ $user->created_at ? $user->created_at->format('d-m-Y H:i') : 'N/A' }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Updated:</strong> 
-                            {{ $user->updated_at ? $user->updated_at->format('d-m-Y H:i') : 'N/A' }}
-                        </li>
-                        
-                        
-                        {{-- <li class="list-group-item">
-                            <strong>Created At:</strong> {{ $user->created_at->format('d-m-Y H:i') }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Updated:</strong> {{ $user->updated_at->format('d-m-Y H:i') }}
-                        </li> --}}
-                    </ul>
-                       
+                    <div class="card-header"><i class="nav-icon fa fa-users nav-icon"></i> {{ __('View User') }}</div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>{{ $user->name }}</strong>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Service No:</strong> {{ $user->service_no }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Rank:</strong> {{ $user->ranks->name }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Name:</strong> {{ $user->name }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Email:</strong> {{ $user->email }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Regiment:</strong> {{ $user->regiments->regiment }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Unit:</strong> {{ $user->units->unit }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Role:</strong> {{ $user->role->name }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Active:</strong> {{ $user->active ? 'Yes' : 'No' }}
+                            </li>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-   </div>
-   @include('footer')
-   @endsection
-     
-                       
+</div>
+@include('footer')
+@endsection

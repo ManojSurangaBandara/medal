@@ -31,6 +31,7 @@ class Person extends Authenticatable
             'regiment_id',
             'rank_id',
             'unit_id',
+            'doe',
     ];
 
     /**

@@ -51,6 +51,7 @@ class PersonController extends Controller
             'rank_id' => 'required|numeric',
             'regiment_id' => 'required|numeric',
             'unit_id' => 'required|numeric',
+            'doe' => 'required|date|before_or_equal:today',
         ], [
             'service_no.unique' => 'Person already added.',
         ]);
@@ -85,6 +86,8 @@ class PersonController extends Controller
             'rank_id' => 'required|numeric',
             'regiment_id' => 'required|numeric',
             'unit_id' => 'required|numeric',
+            'doe' => 'required|date|before_or_equal:today',
+
         ]);
 
         // $person = Person::findOrFail($id);

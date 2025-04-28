@@ -49,7 +49,11 @@ class MedalProfileDataTable extends DataTable
                 return $badge;
             })
             ->addColumn('action', function ($medal_profile) {
-                $btn = '<a href="' . route('medal_profiles.edit', $medal_profile->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit MedalProfile" ><i class="fa fa-pen"></i></a> ';
+                $btn = '';
+                if ($medal_profile->status == config('const.MEDAL_PROFILE_STATUS_PENDING_VALUE')) {
+                    $btn = '<a href="' . route('medal_profiles.activate', $medal_profile->id) . '" class="btn btn-xs btn-success" data-toggle="tooltip" title="Activate MedalProfile" ><i class="fa fa-check"></i></a> ';
+                }
+                $btn .= '<a href="' . route('medal_profiles.edit', $medal_profile->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit MedalProfile" ><i class="fa fa-pen"></i></a> ';
                 $btn .= '<form  action="' . route('medal_profiles.destroy', $medal_profile->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
                             ' . csrf_field() . '
                                 ' . method_field("DELETE") . '

@@ -4,42 +4,54 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
-
-            @if (session('status'))
-                <div class="alert alert-success">{{ session('status') }}</div>
-            @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' View Person') }}</div>
-            
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <strong>Service No:</strong> {{ $person->service_no }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>E No:</strong> {{ $person->eno }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Rank:</strong> {{ $person->rank->name }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Name:</strong> {{ $person->name }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Regiment:</strong> {{ $person->regiment->regiment }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Unit:</strong> {{ $person->unit->unit }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Created At:</strong> {{ $person->created_at->format('d-m-Y H:i') }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Updated:</strong> {{ $person->updated_at->format('d-m-Y H:i') }}
-                        </li>
-                    </ul>
-                </div>
+                    <div class="card-header">
+                        <i class="nav-icon fa fa-users nav-icon"></i> {{ __('View Person') }}
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <label>Service No:</label>
+                            <p class="form-control">{{ $person->service_no }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>E No:</label>
+                            <p class="form-control">{{ $person->eno }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Rank:</label>
+                            <p class="form-control">{{ $person->rank->name ?? '' }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Name:</label>
+                            <p class="form-control">{{ $person->name }}</p>
+                        </div>
+
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-6">
+                                <label>Regiment:</label>
+                                <p class="form-control">{{ $person->regiment->regiment ?? '' }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Unit:</label>
+                                <p class="form-control">{{ $person->unit->unit ?? '' }}</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 mt-3">
+                            <label>Date of Enlistment:</label>
+                            <p class="form-control">{{ $person->doe }}</p>
+                        </div>
+
+                        <div class="mt-4">
+                            <a href="{{ route('persons.index') }}" class="btn btn-secondary">Back</a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,5 +59,3 @@
 </div>
 @include('footer')
 @endsection
-     
-                       
