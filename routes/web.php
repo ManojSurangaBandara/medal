@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('medal_profiles', MedalProfileController::class);
 
     Route::get('/medal_profiles/activate/{id}',[MedalProfileController::class,'activate_medal_profile'])->name('medal_profiles.activate');
+    Route::get('/medal_profiles/close/{id}',[MedalProfileController::class,'close_medal_profile'])->name('medal_profiles.close');
 
     });
 

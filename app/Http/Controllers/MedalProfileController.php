@@ -122,6 +122,15 @@ class MedalProfileController extends Controller
         return redirect()->route('medal_profiles.index')->with('success', 'Medal Profile activated successfully.');
     }
 
+    public function close_medal_profile(string $id)
+    {
+        $medal_profile = MedalProfile::findOrFail($id);
+        $medal_profile->status = config('const.MEDAL_PROFILE_STATUS_CLOSE_VALUE');
+        $medal_profile->save();
+
+        return redirect()->route('medal_profiles.index')->with('success', 'Medal Profile closed successfully.');
+    }
+
 
 
 }
