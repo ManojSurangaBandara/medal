@@ -24,12 +24,15 @@ class MedalsDataTable extends DataTable
         return (new EloquentDataTable($query))
         ->addIndexColumn()
         ->addColumn('image', function ($medalsdatatable) {
-            return '<a href="'.asset('/storage/'.$medalsdatatable->image).'" target="_blank"></a>';
+            return'<a href="' . asset('/storage/' . $medalsdatatable->image) . '" target="_blank">
+            <img src="' . asset('/storage/' . $medalsdatatable->image) . '" width="50" height="50" />
+            </a>';
         })
         ->editColumn('is_un', function ($row) {
             switch ($row->is_un) {
                 case 0:
                      $badge = '<span class="badge badge-danger">Not UN</span>';
+                     break;
                 case 1:
                     $badge = '<span class="badge badge-warning">UN</span>';
                     break;
@@ -49,7 +52,8 @@ class MedalsDataTable extends DataTable
             $btn .= '<a href="'.route('medals.show', $medalsdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
             return $btn;
         })
-        ->rawColumns([ 'action','image','is_un']);
+        ->rawColumns(['action', 'image', 'is_un']);
+
     }
 
     /**

@@ -12,7 +12,7 @@
                 <div class="card card-teal">
                 <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Add Medal') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('medals.store') }}" method="POST">
+                    <form action="{{ route('medals.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="">Name:</label>
@@ -22,14 +22,32 @@
                             <label for="">Description:</label>
                             <input type="text" name="description" required class="form-control"/>
                         </div>
+
+                        <!-- Image Upload -->
                         <div class="mb-3">
+                            <label for="image">Image:</label>
+                            <input type="file" class="form-control" id="image" name="image" />
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        {{-- <div class="mb-3">
                             <label for="image">Image</label>
                             <input type="file" class="form-control" id="image" name="image">
-                        </div>
-                        <div class="form-group form-check">
+                        </div> --}}
+
+                        
+                            <!-- UN Checkbox -->
+                            <div class="form-group form-check">
+                                <input type="hidden" name="is_un" value="0"> <!-- Ensure 0 is sent if unchecked -->
+                                <input type="checkbox" class="form-check-input" id="is_un" name="is_un" value="1" {{ old('is_un') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="is_un">Is UN?</label>
+                            </div>
+                        {{-- <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="is_un" name="is_un" checked>
                             <label class="form-check-label" for="is_un">Is UN?</label>
-                        </div>
+                        </div> --}}
                        
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
