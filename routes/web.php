@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('rtypes', RtypeController::class);
     Route::resource('medal_profiles', MedalProfileController::class);
 
-
+    Route::get('/medal_profiles/activate/{id}',[MedalProfileController::class,'activate_medal_profile'])->name('medal_profiles.activate');
 
 
 
