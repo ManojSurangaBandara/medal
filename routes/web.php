@@ -13,18 +13,11 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AddmedalController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\RtypeController;
-use App\Http\Controllers\ReferenceController;
-
-
-
-
-
-
+use App\Http\Controllers\MedalProfileController;
 
 Route::get('/', function () {
     return view('auth.login');
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -48,14 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('addmedals', AddmedalController::class);
     Route::resource('multiples', MultipleController::class);
     Route::resource('rtypes', RtypeController::class);
-    Route::resource('references', ReferenceController::class);
+    Route::resource('medal_profiles', MedalProfileController::class);
 
     Route::get('/medal_profiles/activate/{id}',[MedalProfileController::class,'activate_medal_profile'])->name('medal_profiles.activate');
-
-
-
-
-
 
     });
 
