@@ -20,6 +20,19 @@
                             <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $medal->name) }}" required>
 
                         </div>
+                        <div class="mb-3">
+                            <label for="">Description:</label>
+                            <input type="text" name="description"  class="form-control" value="{{ old('description', $medal->description) }}" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" class="form-control" id="file" value="{{$medal->image}}"required>
+                        </div>
+                      
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="is_un" name="is_un" checked>
+                            <label class="form-check-label" for="is_un">Is UN?</label>
+                        </div>
                       
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>

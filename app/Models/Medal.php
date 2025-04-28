@@ -12,6 +12,9 @@ class Medal extends Model
     protected $table = 'medals';
     protected $fillable = [
         'name',
+        'description',
+        'image',
+        'un mission or not',
 
     ];
 

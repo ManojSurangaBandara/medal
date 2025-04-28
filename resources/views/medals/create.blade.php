@@ -18,6 +18,18 @@
                             <label for="">Name:</label>
                             <input type="text" name="name" required class="form-control"/>
                         </div>
+                        <div class="mb-3">
+                            <label for="">Description:</label>
+                            <input type="text" name="description" required class="form-control"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="is_un" name="is_un" checked>
+                            <label class="form-check-label" for="is_un">Is UN?</label>
+                        </div>
                        
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>

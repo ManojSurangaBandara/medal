@@ -23,21 +23,21 @@ class MedalsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
         ->addIndexColumn()
-        // ->addColumn('image', function ($medalsdatatable) {
-        //     return '<a href="'.asset('/storage/'.$medalsdatatable->image).'" target="_blank"></a>';
-        // })
-        // ->editColumn('un mission or not', function ($row) {
-        //     switch ($row->un mission or not) {
-        //         case 0:
-         //             $badge = '<span class="badge badge-danger">Not UN</span>';
-        //         case 1:
-        //             $badge = '<span class="badge badge-warning">UN</span>';
-        //             break;
-        //         
-        //        
-        //     }
-        //     return $badge;
-        // })
+        ->addColumn('image', function ($medalsdatatable) {
+            return '<a href="'.asset('/storage/'.$medalsdatatable->image).'" target="_blank"></a>';
+        })
+        ->editColumn('is_un', function ($row) {
+            switch ($row->is_un) {
+                case 0:
+                     $badge = '<span class="badge badge-danger">Not UN</span>';
+                case 1:
+                    $badge = '<span class="badge badge-warning">UN</span>';
+                    break;
+                
+               
+            }
+            return $badge;
+        })
         ->addColumn('action', function ($medalsdatatable) {
             $btn = '<a href="'.route('medals.edit',$medalsdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
             $btn .= '<form  action="' . route('medals.destroy', $medalsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
@@ -49,7 +49,7 @@ class MedalsDataTable extends DataTable
             $btn .= '<a href="'.route('medals.show', $medalsdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
             return $btn;
         })
-        ->rawColumns([ 'action','image','un mission or not']);
+        ->rawColumns([ 'action','image','is_un']);
     }
 
     /**
@@ -95,7 +95,7 @@ class MedalsDataTable extends DataTable
             Column::make('name'),
             Column::make('description'),
             Column::make('image')->title('Image'),
-            Column::make('un mission or not')->title('UN Mission or Not'),
+            Column::make('is_un')->title('UN Mission or Not'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')

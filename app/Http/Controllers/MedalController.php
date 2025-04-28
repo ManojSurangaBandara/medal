@@ -30,8 +30,24 @@ class MedalController extends Controller
 
     public function store(Request $request)
     {
-        Medal::create($request->all());
-        return redirect()->route('medals.index');
+        $validated = $request->validate([
+            
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'iamge' =>'nullable|image',
+            'is_un' => 'required|boolean',
+
+            ]);
+        
+      
+            $medal = Medal::create($validated);
+    
+          
+            
+    
+            return redirect()->route('medals.index');
+        // Medal::create($request->all());
+        // return redirect()->route('medals.index');
     }
 
     public function show(Medal $medal)
@@ -46,7 +62,19 @@ class MedalController extends Controller
 
     public function update(Request $request, Medal $medal)
     {
-        $medal->update($request->all());
+
+        $validated = $request->validate([
+            
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'iamge' =>'nullable|image',
+            'is_un' => 'required|boolean',
+
+            ]);
+        
+      
+            $medal = Medal::update($validated);
+        // $medal->update($request->all());
         return redirect()->route('medals.index');
     }
 
