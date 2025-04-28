@@ -82,6 +82,7 @@ class PersonDataTable extends DataTable
             Column::make('rank.name')->title('Rank'),
             Column::make('regiment.regiment')->title('Regiment'),
             Column::make('unit.unit')->title('Unit'),
+            Column::make('doe')->title('Date of Enlistment'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
