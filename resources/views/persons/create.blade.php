@@ -119,11 +119,11 @@
                 {
                     // Make an AJAX request to fetch details from the API
                     $.ajax({
-                        url: 'https://eportal1.army.lk/eportal/api/serach_person_by_no',
+                        url: 'https://eportal.army.lk/eportal/api/serach_person_by_no_dailymail',
                         method: 'POST',
                         data: {
                             service_no: svcNo,
-                            api_key: '44616e6a4030323231',
+                            api_key: '4461696c796d61696c4032303233',
                         },
                         success: function(data) {
                             // Check if the response has a person and relevant information

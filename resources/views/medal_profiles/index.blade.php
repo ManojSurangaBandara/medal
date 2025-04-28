@@ -11,7 +11,7 @@
 
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Reference') }}<a href="{{ route('references.create') }}" class="btn btn-primary float-right">Add New Reference</a></div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Medal Profile') }}<a href="{{ route('medal_profiles.create') }}" class="btn btn-primary float-right">Add New Medal Profile</a></div>
 
                 <div class="card-body">
 

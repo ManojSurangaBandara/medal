@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Reference extends Authenticatable
+class MedalProfile extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable ,HasRoles, SoftDeletes;
@@ -20,13 +20,18 @@ class Reference extends Authenticatable
      * @var list<string>
      */
 
-    protected $table = 'references';
+    protected $table = 'medal_profiles';
     protected $fillable = [
             'id',
-            'reference',
+            'reference_no',
             'created_at',
             'updated_at',
             'deleted_at',
+            'rtype_id',
+            'date',
+            'file',
+            'status',
+            'medal_id',
     ];
 
     /**
@@ -50,7 +55,13 @@ class Reference extends Authenticatable
         ];
     }
 
-    public function addmedal(){
-        return $this->hasMany(Addmedal::class);
+    public function rtype()
+    {
+        return $this->belongsTo(Rtype::class, 'rtype_id');
     }
+    public function medal()
+    {
+        return $this->belongsTo(Medal::class, 'medal_id');
+    }
+    
 }

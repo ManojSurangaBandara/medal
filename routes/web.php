@@ -14,7 +14,6 @@ use App\Http\Controllers\AddmedalController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\RtypeController;
 use App\Http\Controllers\ReferenceController;
-use App\Http\Controllers\CountryController;
 
 
 
@@ -50,8 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('multiples', MultipleController::class);
     Route::resource('rtypes', RtypeController::class);
     Route::resource('references', ReferenceController::class);
-    Route::resource('countries', CountryController::class);
-
 
 
 

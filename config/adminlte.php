@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -190,7 +190,7 @@ return [
     |
     */
 
-    'classes_body' => '',
+    'classes_body' => 'sidebar-mini layout-fixed sidebar-open',
     'classes_brand' => '',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
@@ -215,9 +215,9 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => true,
+    'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => true,
-    'sidebar_collapse_remember' => true,
+    'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
@@ -349,7 +349,7 @@ return [
 
             ],
         ],
-       
+
         [
             'text' => 'User Management',
             'icon' => 'fa fa fa- fa-users text-teal',
@@ -403,8 +403,8 @@ return [
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
                 [
-                    'text' => 'Reference',
-                    'url' => 'references',
+                    'text' => 'Medal Profile',
+                    'url' => 'medal_profiles',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
                 [
