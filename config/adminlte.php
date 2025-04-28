@@ -407,6 +407,11 @@ return [
                     'url' => 'medal_profiles',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
+                [
+                    'text' => 'Country',
+                    'url' => 'countries',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
             ],
         ],
 
