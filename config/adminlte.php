@@ -407,6 +407,11 @@ return [
                     'url' => 'references',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
+                [
+                    'text' => 'Country',
+                    'url' => 'countries',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
             ],
         ],
 
