@@ -119,7 +119,6 @@
         //     alert($('#service_no').val());
         // });
 
-
         $('#service_no').on('change', function() {
 
             var svcNo = $('#service_no').val();
@@ -141,7 +140,7 @@
                             // Extract the required fields
                             var eno = person.eno || '';
                             var rank = person.rank || '';
-                            var name = person.name_with_initial || '';
+                            var name = person.name_according_to_part2 || '';
                             var regiment = person.regiment || '';
                             var unit = person.unit || '';
                             var doe = person.doe || '';
