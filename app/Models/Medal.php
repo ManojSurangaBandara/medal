@@ -14,7 +14,7 @@ class Medal extends Model
         'name',
         'description',
         'image',
-        'un mission or not',
+        'is_un',
 
     ];
 
