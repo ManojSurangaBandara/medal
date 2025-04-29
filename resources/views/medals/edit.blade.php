@@ -12,7 +12,7 @@
                 <div class="card card-teal">
                 <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Edit Medal') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('medals.update', $medal->id) }}" method="POST">
+                    <form action="{{ route('medals.update', $medal->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -20,7 +20,41 @@
                             <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $medal->name) }}" required>
 
                         </div>
+                        <div class="mb-3">
+                            <label for="">Description:</label>
+                            <input type="text" name="description"  class="form-control" value="{{ old('description', $medal->description) }}" required/>
+                        </div>
+                         <!-- Image Upload -->
+                         <div class="mb-3">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" class="form-control" id="file">
+                            @if ($medal->image)
+                                <div class="mt-2">
+                                    <img src="{{ asset('storage/'.$medal->image) }}" alt="Current Image" width="100" />
+                                </div>
+                            @endif
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Is UN Checkbox -->
+                        <div class="form-group form-check">
+                            <input type="hidden" name="is_un" value="0"> <!-- Ensure 0 is sent if unchecked -->
+                            <input type="checkbox" class="form-check-input" id="is_un" name="is_un" value="1" {{ old('is_un', $medal->is_un) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="is_un">Is UN?</label>
+                        </div>
+
+                        {{-- <div class="mb-3">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" class="form-control" id="file" value="{{$medal->image}}"required>
+                        </div>
                       
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="is_un" name="is_un" checked>
+                            <label class="form-check-label" for="is_un">Is UN?</label>
+                        </div>
+                       --}}
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>

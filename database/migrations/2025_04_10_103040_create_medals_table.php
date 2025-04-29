@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('medals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description');
+            $table->binary('image')->nullable(); 
+            $table->boolean('is_un')->default(true); // Add 'is_active' field
+
             $table->timestamps();
         });
     }
