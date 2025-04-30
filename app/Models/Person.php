@@ -71,6 +71,6 @@ class Person extends Authenticatable
     }
 
     public function addmedal(){
-        return $this->hasMany(Addmedal::class,'addmedal_id','id');
+        return $this->hasMany(Addmedal::class,'person_id','id');
     }
 }

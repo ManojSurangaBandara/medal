@@ -319,6 +319,7 @@ return [
 
 
                 ],
+
                 // [
                 //     'text' => 'Add Person',
                 //     'url' => 'persons/create',
@@ -414,6 +415,20 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Reports',
+            'icon' => 'fa fa fa- fa-cog text-blue',
+            'submenu' => [
+                [
+                    'text' => 'Person Profile',
+                    'url' => 'reports/person_profile',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+
+
+                ],
+            ],
+        ],
+
 
     ],
 

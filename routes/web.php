@@ -14,6 +14,9 @@ use App\Http\Controllers\AddmedalController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\RtypeController;
 use App\Http\Controllers\MedalProfileController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\ReportController;
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -48,6 +51,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/medal_profiles/close/{id}', [MedalProfileController::class, 'close_medal_profile'])->name('medal_profiles.close');
 
     Route::get('persons/search/ajax', [PersonController::class, 'person_search_ajax'])->name('persons.search.ajax');
+    Route::get('reports/person_profile', [ReportController::class, 'person_profile'])->name('reports.person_profile');
+    Route::post('reports/person_profile_show', [ReportController::class, 'person_profile_show'])->name('reports.person_profile_show');
+
+
 });
 
 require __DIR__ . '/auth.php';
