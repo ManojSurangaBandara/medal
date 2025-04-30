@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Medal;
 use App\DataTables\MedalsDataTable;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,6 @@ class MedalController extends Controller
         $this->middleware('permission:create_medals')->only('create', 'store');
         $this->middleware('permission:edit_medals')->only('edit', 'update');
         $this->middleware('permission:delete_medals')->only('destroy');
-
     }
 
     public function index(MedalsDataTable $dataTable)
@@ -40,10 +40,9 @@ class MedalController extends Controller
             'is_un' => 'required|in:0,1',
         ]);
 
-
-        if($request->hasFile('image')) {
-            $path = $request->file('image')->store('medal_images', 'public'); // stores in storage/app/private/medal_images
-            $validated['image'] = $path;
+        if ($request->hasFile('image')) {
+            $imageContent = file_get_contents($request->file('image')->getRealPath());
+            $validated['image'] = $imageContent;
         } else {
             // If no file is uploaded
             unset($validated['image']);
@@ -55,9 +54,9 @@ class MedalController extends Controller
     }
 
     public function show(Medal $medal)
-{
-    return view('medals.show', compact('medal'));
-}
+    {
+        return view('medals.show', compact('medal'));
+    }
 
     public function edit(Medal $medal)
     {
@@ -66,18 +65,16 @@ class MedalController extends Controller
 
     public function update(Request $request, Medal $medal)
     {
-
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Fixed typo to 'image'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
             'is_un' => 'required|boolean',
         ]);
 
-        if($request->hasFile('image')) {
-            // If a new file is uploaded, store it and update the path
-            $path = $request->file('image')->store('medal_images', 'public'); // stores in storage/app/private/medal_reference_files
-            $validated['image'] = $path;
+        if ($request->hasFile('image')) {
+            $imageContent = file_get_contents($request->file('image')->getRealPath());
+            $validated['image'] = $imageContent;
         } else {
             // If no new file is uploaded, keep the existing file path
             unset($validated['image']);
@@ -101,7 +98,5 @@ class MedalController extends Controller
 
         return redirect()->route('medals.index');
     }
-        // $medal->delete();
-        // return redirect()->route('medals.index');
-    }
 
+}

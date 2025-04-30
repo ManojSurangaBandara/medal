@@ -24,9 +24,10 @@ class MedalsDataTable extends DataTable
         return (new EloquentDataTable($query))
         ->addIndexColumn()
         ->addColumn('image', function ($medalsdatatable) {
-            return'<a href="' . asset('/storage/' . $medalsdatatable->image) . '" target="_blank">
-            <img src="' . asset('/storage/' . $medalsdatatable->image) . '" width="50" height="50" />
-            </a>';
+            if ($medalsdatatable->image) {
+                $base64 = base64_encode($medalsdatatable->image);
+                return '<img src="data:image/jpeg;base64,' . $base64 . '" width="50" height="50" />';
+            }
         })
         ->editColumn('is_un', function ($row) {
             switch ($row->is_un) {
@@ -36,8 +37,8 @@ class MedalsDataTable extends DataTable
                 case 1:
                     $badge = '<span class="badge badge-warning">UN</span>';
                     break;
-                
-               
+
+
             }
             return $badge;
         })
