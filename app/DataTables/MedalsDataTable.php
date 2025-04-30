@@ -26,7 +26,7 @@ class MedalsDataTable extends DataTable
         ->addColumn('image', function ($medalsdatatable) {
             if ($medalsdatatable->image) {
                 $base64 = base64_encode($medalsdatatable->image);
-                return '<img src="data:image/jpeg;base64,' . $base64 . '" width="50" height="50" />';
+                return '<img src="data:image/jpeg;base64,' . $base64 . '" width="50" />';
             }
         })
         ->editColumn('is_un', function ($row) {
