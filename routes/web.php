@@ -14,6 +14,8 @@ use App\Http\Controllers\AddmedalController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\RtypeController;
 use App\Http\Controllers\MedalProfileController;
+use App\Http\Controllers\CountryController;
+
 
 Route::get('/', function () {
     return view('auth.login');
