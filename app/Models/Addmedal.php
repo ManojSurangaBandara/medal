@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Addmedal extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable ,HasRoles, SoftDeletes;
+    use HasFactory, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,16 +20,19 @@ class Addmedal extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-            'id',
-            'person_id',
-            'medal_id',
-            'reference_id',
-            'rtype_id',
-            'date',
-            'file',
-            
-            
-            
+        'id',
+        'person_id',
+        'medal_id',
+        'medal_profile_id',
+        'rtype_id',
+        'date',
+        'file',
+        'person_name',
+        'person_rank',
+        'is_un',
+        'country_id',
+        'to',
+        'from',
     ];
 
     /**
@@ -37,9 +40,7 @@ class Addmedal extends Authenticatable
      *
      * @var list<string>
      */
-    protected $hidden = [
-      
-    ];
+    protected $hidden = [];
 
     /**
      * Get the attributes that should be cast.
@@ -48,35 +49,31 @@ class Addmedal extends Authenticatable
      */
     protected function casts(): array
     {
-        return [
-            
-        ];
+        return [];
     }
-
-  
 
     public function person()
     {
-        return $this->belongsTo(Person::class,'person_id');
+        return $this->belongsTo(Person::class, 'person_id');
     }
 
     public function medal()
     {
         return $this->belongsTo(Medal::class, 'medal_id');
-       
-
     }
-    public function reference()
+
+    public function medal_profile()
     {
-        return $this->belongsTo(Reference::class, 'reference_id');
-       
-
+        return $this->belongsTo(MedalProfile::class, 'medal_profile_id');
     }
+
     public function rtype()
     {
         return $this->belongsTo(Rtype::class, 'rtype_id');
-       
-
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 }

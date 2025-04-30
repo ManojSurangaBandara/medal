@@ -335,7 +335,7 @@ return [
             'icon' => 'fa fa fa- fa-tasks text-orange',
             'submenu' => [
                 [
-                    'text' => 'Add Medal',
+                    'text' => 'Add Person to Medal Profile',
                     'url' => 'addmedals',
                     'icon' => 'far fa-circle nav-icon text-orange',
 

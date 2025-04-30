@@ -34,16 +34,14 @@ class PersonController extends Controller
     public function create()
     {
         $regiment = Regiment::all();
-
         $rank = Rank::all();
         $unit = Unit::all();
 
-        return view('persons.create', compact('regiment','rank','unit'));
+        return view('persons.create', compact('regiment', 'rank', 'unit'));
     }
 
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             'service_no' => 'required|string|max:255|unique:persons,service_no',
             'eno' => 'required|string|max:255',
@@ -70,11 +68,10 @@ class PersonController extends Controller
     public function edit(Person $person)
     {
         $regiments = Regiment::all();
-
         $ranks = Rank::all();
         $units = Unit::all();
 
-        return view('persons.edit', compact('regiments','ranks','units', 'person'));
+        return view('persons.edit', compact('regiments', 'ranks', 'units', 'person'));
     }
 
     public function update(Request $request, Person $person)
@@ -102,4 +99,12 @@ class PersonController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person deleted successfully.');
     }
 
+    public function person_search_ajax(Request $request)
+    {
+        $query = $request->get('service_no');
+        $persons = Person::where('service_no', 'LIKE', "{$query}%")->with(['rank', 'regiment'])
+            ->get();
+
+        return response()->json($persons);
+    }
 }
