@@ -55,8 +55,8 @@
 
                                     <div class="timeline-body d-flex align-items-center gap-3">
                                         @if ($addmedal->medal->image)
-                                            <img src="{{ asset('storage/' . $addmedal->medal->image) }}" alt="Medal Image"
-                                                 class="img-thumbnail mr-3" style="max-width: 120px;">
+
+                                                 <img src="data:image/jpeg;base64,{{ base64_encode($addmedal->medal->image) }}" alt="Medal"  width="50" />
                                         @endif
                                         <div>
 
