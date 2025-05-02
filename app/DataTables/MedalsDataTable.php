@@ -64,7 +64,7 @@ class MedalsDataTable extends DataTable
      */
     public function query(Medal $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('medal_type');
     }
 
     /**
@@ -96,13 +96,11 @@ class MedalsDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->searchable(false)->orderable(false)->width(5),
 
-            // Column::make('id'),
             Column::make('name'),
             Column::make('description'),
+            Column::make('medal_type.medal_type')->title('Medal Type'),
             Column::make('image')->title('Image'),
             Column::make('is_un')->title('UN Mission or Not'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

@@ -16,6 +16,7 @@ use App\Http\Controllers\RtypeController;
 use App\Http\Controllers\MedalProfileController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\MedalTypeController;
 
 
 Route::get('/', function () {
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('units', UnitController::class);
     Route::resource('users', UserController::class);
     Route::resource('medals', MedalController::class);
+    Route::resource('medal_types', MedalTypeController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('persons', PersonController::class);
@@ -53,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('persons/search/ajax', [PersonController::class, 'person_search_ajax'])->name('persons.search.ajax');
     Route::get('reports/person_profile', [ReportController::class, 'person_profile'])->name('reports.person_profile');
     Route::post('reports/person_profile_show', [ReportController::class, 'person_profile_show'])->name('reports.person_profile_show');
+
 
 
 });

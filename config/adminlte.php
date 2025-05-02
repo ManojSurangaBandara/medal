@@ -399,6 +399,11 @@ return [
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
                 [
+                    'text' => 'Medal Type',
+                    'url' => 'medal_types',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
+                [
                     'text' => 'Reference Type',
                     'url' => 'rtypes',
                     'icon' => 'far fa-circle nav-icon text-blue',
