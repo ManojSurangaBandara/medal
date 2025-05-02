@@ -79,7 +79,7 @@ class UserController extends Controller
         $user->assignRole($role->name);
         
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
 
     public function show(User $user)
@@ -124,12 +124,12 @@ class UserController extends Controller
         $user->syncPermissions($request->input('permissions'));
 
         // $user->update($request->all());
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully!');
     }
 }

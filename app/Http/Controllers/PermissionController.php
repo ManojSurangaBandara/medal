@@ -40,7 +40,7 @@ class PermissionController extends Controller
             'guard_name' => 'web', 
         ]);
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('success', 'Permission created successfully.');
     }
 
     public function show(Permission $permission)
@@ -56,12 +56,12 @@ class PermissionController extends Controller
     public function update(Request $request, Permission $permission)
     {
         $permission->update($request->all());
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('success', 'Permission updated successfully.');
     }
 
     public function destroy(Permission $permission)
     {
         $permission->delete();
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('success', 'Permission deleted successfully.');
     }
 }

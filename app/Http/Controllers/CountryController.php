@@ -31,7 +31,7 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         Country::create($request->all());
-        return redirect()->route('countries.index');
+        return redirect()->route('countries.index')->with('success', 'Country created successfully.');
     }
 
     public function show(Country $country)
@@ -47,14 +47,14 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $country->update($request->all());
-        return redirect()->route('countries.index');
+        return redirect()->route('countries.index')->with('success', 'Country updated successfully.');
     }
 
     public function destroy(Country $country)
 
     {
         $country->delete();
-        return redirect()->route('countries.index');
+        return redirect()->route('countries.index')->with('success', 'Country deleted successfully.');
     }
 }
 
