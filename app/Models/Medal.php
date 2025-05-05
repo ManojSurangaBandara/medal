@@ -13,6 +13,7 @@ class Medal extends Model
     protected $fillable = [
         'name',
         'description',
+        'medal_type_id',
         'image',
         'is_un',
 

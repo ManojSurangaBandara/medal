@@ -22,9 +22,17 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="">Medal Type: </label>
+                            <p>{{ $medal->medal_type->medal_type }}</p>
+                        </div>
+
+                        <div class="mb-3">
                             <strong>Image:</strong><br>
                             @if($medal->image)
-                                <img src="{{ asset('storage/' . $medal->image) }}" alt="Medal Image" class="img-fluid" style="max-width: 200px;">
+                                @php
+                                    $base64 = base64_encode($medal->image);
+                                @endphp
+                                <img src="data:image/jpeg;base64, {{$base64}} " alt="Medal Image" class="img-fluid" width="100">
                             @else
                                 <p>No image uploaded.</p>
                             @endif

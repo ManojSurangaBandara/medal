@@ -23,6 +23,15 @@
                             <input type="text" name="description" required class="form-control"/>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="">Medal Type: </label>
+                            <select name="medal_type_id" id="medal_type_id" class="form-control" required>
+                                @foreach ($medal_types as $medal_type)
+                                    <option value="{{ $medal_type->id }}">{{ $medal_type->medal_type }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- Image Upload -->
                         <div class="mb-3">
                             <label for="image">Image:</label>
@@ -37,7 +46,7 @@
                             <input type="file" class="form-control" id="image" name="image">
                         </div> --}}
 
-                        
+
                             <!-- UN Checkbox -->
                             <div class="form-group form-check">
                                 <input type="hidden" name="is_un" value="0"> <!-- Ensure 0 is sent if unchecked -->
@@ -48,11 +57,11 @@
                             <input type="checkbox" class="form-check-input" id="is_un" name="is_un" checked>
                             <label class="form-check-label" for="is_un">Is UN?</label>
                         </div> --}}
-                       
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
-                        
+
                     </form>
                 </div>
                 </div>
@@ -62,5 +71,5 @@
 </div>
 @include('footer')
 @endsection
-     
-                       
+
+

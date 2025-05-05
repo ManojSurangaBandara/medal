@@ -24,13 +24,24 @@
                             <label for="">Description:</label>
                             <input type="text" name="description"  class="form-control" value="{{ old('description', $medal->description) }}" required/>
                         </div>
+                        <div class="mb-3">
+                            <label for="">Medal Type: </label>
+                            <select name="medal_type_id" id="medal_type_id" class="form-control" required>
+                                @foreach ($medal_types as $medal_type)
+                                    <option value="{{ $medal_type->id }}" {{ $medal_type->id == $medal->medal_type->id ? 'selected' : '' }}>{{ $medal_type->medal_type }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                          <!-- Image Upload -->
                          <div class="mb-3">
                             <label for="image">Image</label>
                             <input type="file" name="image" class="form-control" id="file">
                             @if ($medal->image)
                                 <div class="mt-2">
-                                    <img src="{{ asset('storage/'.$medal->image) }}" alt="Current Image" width="100" />
+                                    @php
+                                        $base64 = base64_encode($medal->image);
+                                    @endphp
+                                    <img src="data:image/jpeg;base64, {{$base64}}" alt="Current Image" width="100" />
                                 </div>
                             @endif
                             @error('image')
@@ -49,7 +60,7 @@
                             <label for="image">Image</label>
                             <input type="file" name="image" class="form-control" id="file" value="{{$medal->image}}"required>
                         </div>
-                      
+
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="is_un" name="is_un" checked>
                             <label class="form-check-label" for="is_un">Is UN?</label>
@@ -58,7 +69,7 @@
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
-                        
+
                     </form>
                 </div>
                 </div>
@@ -69,5 +80,5 @@
 @include('footer')
 @endsection
 
-     
-                       
+
+

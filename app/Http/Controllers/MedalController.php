@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medal;
 use App\DataTables\MedalsDataTable;
+use App\Models\MedalType;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -27,7 +28,8 @@ class MedalController extends Controller
 
     public function create()
     {
-        return view('medals.create');
+        $medal_types = MedalType::all();
+        return view('medals.create', compact('medal_types'));
     }
 
     public function store(Request $request)
@@ -36,6 +38,7 @@ class MedalController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'medal_type_id' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg', // Fixed typo to 'image'
             'is_un' => 'required|in:0,1',
         ]);
@@ -60,7 +63,8 @@ class MedalController extends Controller
 
     public function edit(Medal $medal)
     {
-        return view('medals.edit', compact('medal'));
+        $medal_types = MedalType::all();
+        return view('medals.edit', compact('medal', 'medal_types'));
     }
 
     public function update(Request $request, Medal $medal)
@@ -68,7 +72,8 @@ class MedalController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'medal_type_id' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'is_un' => 'required|boolean',
         ]);
 
