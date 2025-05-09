@@ -9,6 +9,10 @@ use App\Models\MedalProfile;
 use App\Models\Addmedal;
 use App\DataTables\AddmedalsDataTable;  // Import Location Model
 use App\Models\Country;
+use App\Models\Regiment;
+use App\Imports\AddMedalImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\HeadingRowImport;
 
 use Illuminate\Http\Request;
 
@@ -70,7 +74,6 @@ class AddmedalController extends Controller
         return view('addmedals.show', compact('addmedal'));
     }
 
-
     public function edit(Addmedal $addmedal)
     {
         $person = Person::all();
@@ -112,5 +115,40 @@ class AddmedalController extends Controller
     {
         $addmedal->delete();
         return redirect()->route('addmedals.index')->with('success', 'Addmedal deleted successfully.');
+    }
+
+    public function create_bulk()
+    {
+        $medal_profiles = MedalProfile::where('status', config('const.MEDAL_PROFILE_STATUS_ACTIVE_VALUE'))->get();
+        $regiments = Regiment::all();
+
+        return view('addmedals.create_bulk', compact('medal_profiles', 'regiments'));
+    }
+
+    public function store_bulk(Request $request)
+    {
+        $request->validate([
+            'medal_profile_id' => 'required|numeric',
+            'regiment_id' => 'required|numeric',
+            'file' => 'required|mimes:xlsx,xls,csv',
+        ]);
+
+        //Check if file header names are correct
+        $headings = (new HeadingRowImport)->toArray($request->file('file'))[0][0] ?? [];
+        $expected = ['service_no', 'rank', 'name', 'unit']; // whatever you expect
+        foreach ($expected as $heading) {
+            if (!in_array($heading, $headings)) {
+                return back()->withErrors(["Missing or incorrect heading: '$heading'. Please download and refer to the 'Empty Excel File' for correct format."]);
+            }
+        }
+
+        //Import from excel file
+        try {
+            Excel::import(new AddMedalImport($request->regiment_id, $request->medal_profile_id), $request->file('file'));
+
+            return redirect()->route('addmedal.create_bulk')->with('status', 'File Imported Successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['excel_error' => $e->getMessage()]);
+        }
     }
 }

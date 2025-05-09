@@ -333,20 +333,34 @@ return [
 
         [
             'text' => 'Medal Profile Management',
-            'icon' => 'fa fa fa- fa-tasks text-orange',
+            'icon' => 'fa fa fa- fa-medal text-orange',
             'submenu' => [
                 [
-                    'text' => 'Add Person to Medal Profile',
+                    'text' => 'All Person to Medal Profile',
                     'url' => 'addmedals',
                     'icon' => 'far fa-circle nav-icon text-orange',
 
 
                 ],
                 [
-                    'text' => 'Person Has Multiple Reference',
-                    'url' => 'multiples/create',
+                    'text' => 'Add Person to Medal Profile',
+                    'url' => 'addmedals/create',
                     'icon' => 'far fa-circle nav-icon text-orange',
+
+
                 ],
+                [
+                    'text' => 'Bulk Add Person to Medal Profile',
+                    'url' => 'addmedal/create_bulk',
+                    'icon' => 'far fa-circle nav-icon text-orange',
+
+
+                ],
+                // [
+                //     'text' => 'Person Has Multiple Reference',
+                //     'url' => 'multiples/create',
+                //     'icon' => 'far fa-circle nav-icon text-orange',
+                // ],
 
             ],
         ],

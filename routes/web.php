@@ -17,7 +17,8 @@ use App\Http\Controllers\MedalProfileController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MedalTypeController;
-
+use App\Http\Controllers\ExcelController;
+use App\Models\MedalProfile;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -56,8 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::get('reports/person_profile', [ReportController::class, 'person_profile'])->name('reports.person_profile');
     Route::post('reports/person_profile_show', [ReportController::class, 'person_profile_show'])->name('reports.person_profile_show');
 
-
-
+    Route::get('addmedal/create_bulk', [AddmedalController::class, 'create_bulk'])->name('addmedal.create_bulk');
+    Route::post('addmedal/store_bulk', [AddmedalController::class, 'store_bulk'])->name('addmedal.store_bulk');
 });
 
 require __DIR__ . '/auth.php';
