@@ -365,6 +365,29 @@ return [
             ],
         ],
 
+
+        [
+            'text' => 'Clasp Profile Management',
+            'icon' => 'fa fa fa-medal text-orange',
+            'submenu' => [
+                [
+                    'text' => 'All Person to Clasp Profile',
+                    'url' => 'addclasps',
+                    'icon' => 'far fa-circle nav-icon text-orange',
+                ],
+                [
+                    'text' => 'Add Person to Clasp Profile',
+                    'url' => 'addclasps/create',
+                    'icon' => 'far fa-circle nav-icon text-orange',
+                ],
+                // [
+                //     'text' => 'Bulk Add Person to Clasp Profile',
+                //     'url' => 'addclasp/create_bulk',
+                //     'icon' => 'far fa-circle nav-icon text-orange',
+                // ],
+            ],
+        ],
+
         [
             'text' => 'User Management',
             'icon' => 'fa fa fa- fa-users text-teal',
@@ -425,6 +448,11 @@ return [
                 [
                     'text' => 'Medal Profile',
                     'url' => 'medal_profiles',
+                    'icon' => 'far fa-circle nav-icon text-blue',
+                ],
+                [
+                    'text' => 'Clasp Profile',
+                    'url' => 'clasp_profiles',
                     'icon' => 'far fa-circle nav-icon text-blue',
                 ],
                 [

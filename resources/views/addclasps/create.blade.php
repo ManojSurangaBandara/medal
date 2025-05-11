@@ -1,7 +1,5 @@
 @extends('adminlte::page')
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -16,40 +14,38 @@
                     </div>
                 @endif
 
-                @if (session('status'))
-                    <div class="alert alert-success">{{ session('status') }}</div>
-                @endif
-                <div class="card">
+                <div class="card mt-3">
                     <div class="card card-teal">
-                        <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __(' Add Medal') }}</div>
+                        <div class="card-header">
+                            <i class="nav-icon fa fa-users nav-icon"></i> {{ __('Add Person to Clasp Profile') }}
+                        </div>
                         <div class="card-body">
-                            <form action="{{ route('addmedals.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('addclasps.store') }}" method="POST">
                                 @csrf
-
                                 <div class="mb-3">
-                                    <label for="">Person:</label>
+                                    <label for="">Person Search:</label>
                                     <input type="text" class="form-control" id="person_visible"
-                                        placeholder="Type to Search" />
+                                        placeholder="Type to search person..." />
                                     <input type="hidden" name="person_id" id="person_id" />
                                     <div id="searchResults" class="search-results"></div>
-
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="">Medal Profile: </label>
-                                    <select name="medal_profile_id" id="medal_profile_id" class="form-control" required>
-                                        @foreach ($medal_profiles as $medal_profile)
-                                            <option value="{{ $medal_profile->id }}"
-                                                is_un="{{ $medal_profile->medal->is_un || '' }}">
-                                                {{ $medal_profile->rtype->rtype }}-{{ $medal_profile->reference_no }}-{{ $medal_profile->date }}
-                                                : {{ $medal_profile->medal->name }}</option>
+                                    <label for="">Clasp Profile:</label>
+                                    <select name="clasp_profile_id" id="clasp_profile_id" class="form-control" required>
+                                        @foreach ($clasp_profiles as $clasp_profile)
+                                            <option value="{{ $clasp_profile->id }}"
+                                                is_un="{{ $clasp_profile->medal->is_un }}">
+                                                {{ $clasp_profile->rtype->rtype }}-{{ $clasp_profile->reference_no }}-{{ $clasp_profile->date }}
+                                                : {{ $clasp_profile->medal->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                <div id="country_div">
-                                    <div class="mb-3">69
-                                        <label for="">Country: </label>
+                                <div id="country_div" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="">Country:</label>
                                         <select name="country_id" id="country_id" class="form-control">
                                             <option value="">Please Select</option>
                                             @foreach ($countries as $country)
@@ -57,13 +53,13 @@
                                             @endforeach
                                         </select>
                                     </div>
+
                                     <div class="mb-3">
                                         <div class="row g-3 align-items-end">
                                             <div class="col-md-6">
                                                 <label for="">From:</label>
                                                 <input type="date" class="form-control" name="from" id="from" />
                                             </div>
-
                                             <div class="col-md-6">
                                                 <label for="">To:</label>
                                                 <input type="date" class="form-control" name="to" id="to" />
@@ -73,7 +69,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -82,7 +78,7 @@
             </div>
         </div>
     </div>
-    @include('footer')
+
 @endsection
 
 @push('js')
@@ -93,10 +89,10 @@
                 if (search.length > 2) {
                     $.ajax({
                         url: "{{ route('persons.search.ajax') }}",
-                        type: 'GET',
+                        method: 'GET',
                         data: {
                             search: search
-                        }, // Changed from service_no to search
+                        },
                         success: function(response) {
                             $('#searchResults').empty();
                             if (response.length > 0) {
@@ -127,12 +123,9 @@
                 }
             });
 
-            // show/hide country div when page loads
-
-            // Attach event listener to the medal profile dropdown
-            $('#medal_profile_id').on('change', function() {
-
-                if ($(this).find('option:selected').attr('is_un') == 1) {
+            $('#clasp_profile_id').on('change', function() {
+                const isUn = $(this).find('option:selected').attr('is_un');
+                if (isUn == 1) {
                     $('#country_div').show();
                 } else {
                     $('#country_div').hide();
@@ -141,8 +134,8 @@
                     $('#to').val('');
                 }
             });
-            $('#medal_profile_id').trigger('change');
 
+            $('#clasp_profile_id').trigger('change');
         });
     </script>
 @endpush

@@ -19,6 +19,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MedalTypeController;
 use App\Http\Controllers\ExcelController;
 use App\Models\MedalProfile;
+use App\Http\Controllers\ClaspProfileController;
+use App\Http\Controllers\AddclaspController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -49,9 +51,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('rtypes', RtypeController::class);
     Route::resource('medal_profiles', MedalProfileController::class);
     Route::resource('countries', CountryController::class);
+    Route::resource('clasp_profiles', ClaspProfileController::class);
+    Route::resource('addclasps', AddclaspController::class);
 
     Route::get('/medal_profiles/activate/{id}', [MedalProfileController::class, 'activate_medal_profile'])->name('medal_profiles.activate');
     Route::get('/medal_profiles/close/{id}', [MedalProfileController::class, 'close_medal_profile'])->name('medal_profiles.close');
+
+    Route::get('clasp_profiles/{id}/activate', [ClaspProfileController::class, 'activate_clasp_profile'])->name('clasp_profiles.activate');
+    Route::get('clasp_profiles/{id}/close', [ClaspProfileController::class, 'close_clasp_profile'])->name('clasp_profiles.close');
 
     Route::get('persons/search/ajax', [PersonController::class, 'person_search_ajax'])->name('persons.search.ajax');
     Route::get('reports/person_profile', [ReportController::class, 'person_profile'])->name('reports.person_profile');
@@ -59,6 +66,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('addmedal/create_bulk', [AddmedalController::class, 'create_bulk'])->name('addmedal.create_bulk');
     Route::post('addmedal/store_bulk', [AddmedalController::class, 'store_bulk'])->name('addmedal.store_bulk');
+
+    Route::get('addclasp/create_bulk', [AddclaspController::class, 'create_bulk'])->name('addclasp.create_bulk');
+    Route::post('addclasp/store_bulk', [AddclaspController::class, 'store_bulk'])->name('addclasp.store_bulk');
 });
 
 require __DIR__ . '/auth.php';

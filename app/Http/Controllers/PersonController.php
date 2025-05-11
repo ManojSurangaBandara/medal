@@ -101,9 +101,49 @@ class PersonController extends Controller
 
     public function person_search_ajax(Request $request)
     {
-        $query = $request->get('service_no');
-        $persons = Person::where('service_no', 'LIKE', "{$query}%")->with(['rank', 'regiment'])
-            ->get();
+        $search = $request->get('search');
+
+        $persons = Person::where(function ($query) use ($search) {
+            $query->where('service_no', 'like', "%{$search}%")
+                ->orWhere('name', 'like', "%{$search}%")
+                ->orWhere('eno', 'like', "%{$search}%");
+        })
+            ->with(['rank', 'regiment'])
+            ->take(10)
+            ->get()
+            ->map(function ($person) {
+                return [
+                    'id' => $person->id,
+                    'service_no' => $person->service_no,
+                    'name' => $person->name,
+                    'rank_id' => $person->rank->name ?? '',
+                    'regiment_id' => $person->regiment->regiment ?? '',
+                    'eno' => $person->eno ?? ''
+                ];
+            });
+
+        return response()->json($persons);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+
+        $persons = Person::where('service_no', 'like', "%{$search}%")
+            ->orWhere('name', 'like', "%{$search}%")
+            ->with(['rank', 'regiment'])
+            ->take(10)
+            ->get()
+            ->map(function ($person) {
+                return [
+                    'id' => $person->id,
+                    'service_no' => $person->service_no,
+                    'name' => $person->name,
+                    'rank_id' => $person->rank->name,
+                    'regiment_id' => $person->regiment->regiment,
+                    'eno' => $person->eno
+                ];
+            });
 
         return response()->json($persons);
     }
