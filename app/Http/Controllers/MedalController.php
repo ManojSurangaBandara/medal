@@ -53,7 +53,7 @@ class MedalController extends Controller
 
         Medal::create($validated);
 
-        return redirect()->route('medals.index');
+        return redirect()->route('medals.index')->with('success', 'Medal created successfully.');
     }
 
     public function show(Medal $medal)
@@ -88,7 +88,7 @@ class MedalController extends Controller
         // Update the medal with the validated data
         $medal->update($validated);
 
-        return redirect()->route('medals.index');
+        return redirect()->route('medals.index')->with('success', 'Medal updated successfully.');
     }
 
     public function destroy(Medal $medal)
@@ -101,7 +101,7 @@ class MedalController extends Controller
         // Delete the medal record
         $medal->delete();
 
-        return redirect()->route('medals.index');
+        return redirect()->route('medals.index')->with('success', 'Medal deleted successfully.');
     }
 
 }

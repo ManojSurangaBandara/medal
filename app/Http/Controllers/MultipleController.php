@@ -60,7 +60,7 @@ class MultipleController extends Controller
         $multiple = Multiple::create($validated);
 
 
-        return redirect()->route('multiples.create');
+        return redirect()->route('multiples.create')->with('success', 'Multiple created successfully.');
     }
 
     public function show()

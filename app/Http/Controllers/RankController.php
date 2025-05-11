@@ -31,7 +31,7 @@ class RankController extends Controller
     public function store(Request $request)
     {
         Rank::create($request->all());
-        return redirect()->route('ranks.index');
+        return redirect()->route('ranks.index')->with('success', 'Rank created successfully.');
     }
 
     public function show(Rank $rank)
@@ -47,12 +47,12 @@ class RankController extends Controller
     public function update(Request $request, Rank $rank)
     {
         $rank->update($request->all());
-        return redirect()->route('ranks.index');
+        return redirect()->route('ranks.index')->with('success', 'Rank updated successfully.');
     }
 
     public function destroy(Rank $rank)
     {
         $rank->delete();
-        return redirect()->route('ranks.index');
+        return redirect()->route('ranks.index')->with('success', 'Rank deleted successfully.');
     }
 }

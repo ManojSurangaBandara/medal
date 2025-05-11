@@ -31,7 +31,7 @@ class RegimentController extends Controller
     public function store(Request $request)
     {
         Regiment::create($request->all());
-        return redirect()->route('regiments.index');
+        return redirect()->route('regiments.index')->with('success', 'Regiment created successfully.');
     }
 
     public function show(Regiment $regiment)
@@ -47,12 +47,12 @@ class RegimentController extends Controller
     public function update(Request $request, Regiment $regiment)
     {
         $regiment->update($request->all());
-        return redirect()->route('regiments.index');
+        return redirect()->route('regiments.index')->with('success', 'Regiment updated successfully.');
     }
 
     public function destroy(Regiment $regiment)
     {
         $regiment->delete();
-        return redirect()->route('regiments.index');
+        return redirect()->route('regiments.index')->with('success', 'Regiment deleted successfully.');
     }
 }

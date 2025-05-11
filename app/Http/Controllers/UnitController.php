@@ -45,7 +45,7 @@ class UnitController extends Controller
             ]);
         
            
-            $unit = Unit::create($validated);
+            $unit = Unit::create($validated)->with('success', 'Unit created successfully!');
     
 
         // Unit::create($request->all());
@@ -75,12 +75,12 @@ class UnitController extends Controller
 
         $unit->update($user_detail);
         // $unit->update($request->all());
-        return redirect()->route('units.index');
+        return redirect()->route('units.index')->with('success', 'Unit updated successfully!');
     }
 
     public function destroy(Unit $unit)
     {
         $unit->delete();
-        return redirect()->route('units.index');
+        return redirect()->route('units.index')->with('success', 'Unit deleted successfully!');
     }
 }

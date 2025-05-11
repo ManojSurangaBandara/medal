@@ -49,7 +49,7 @@ class RtypeController extends Controller
 
 
         // Unit::create($request->all());
-        return redirect()->route('rtypes.index');
+        return redirect()->route('rtypes.index')->with('success', 'Rtype created successfully!');
     }
 
     public function show(Rtype $rtype)
@@ -74,12 +74,12 @@ class RtypeController extends Controller
 
         $rtype->update($user_detail);
         // $unit->update($request->all());
-        return redirect()->route('rtypes.index');
+        return redirect()->route('rtypes.index')->with('success', 'Rtype updated successfully!');
     }
 
     public function destroy(Rtype $rtype)
     {
         $rtype->delete();
-        return redirect()->route('rtypes.index');
+        return redirect()->route('rtypes.index')->with('success', 'Rtype deleted successfully!');
     }
 }
