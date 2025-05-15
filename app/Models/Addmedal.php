@@ -76,4 +76,14 @@ class Addmedal extends Authenticatable
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
+
+    public function clasps()
+    {
+        return $this->hasMany(Addclasp::class, 'medal_id', 'medal_id');
+    }
+
+    public function hasClasps()
+    {
+        return $this->clasps()->count() > 0;
+    }
 }

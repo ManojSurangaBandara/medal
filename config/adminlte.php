@@ -310,7 +310,7 @@ return [
 
         [
             'text' => 'Person Management',
-            'icon' => 'fa fa fa- fa-user-plus text-blue',
+            'icon' => 'fa fa fa- fa-user text-blue',
             'submenu' => [
                 [
                     'text' => 'All Persons',
@@ -333,33 +333,33 @@ return [
 
         [
             'text' => 'Medal Profile Management',
-            'icon' => 'fa fa fa- fa-medal text-orange',
+            'icon' => 'fa fa fa- fa-medal text-danger',
             'submenu' => [
                 [
                     'text' => 'All Person to Medal Profile',
                     'url' => 'addmedals',
-                    'icon' => 'far fa-circle nav-icon text-orange',
+                    'icon' => 'far fa-circle nav-icon text-danger',
 
 
                 ],
                 [
                     'text' => 'Add Person to Medal Profile',
                     'url' => 'addmedals/create',
-                    'icon' => 'far fa-circle nav-icon text-orange',
+                    'icon' => 'far fa-circle nav-icon text-danger',
 
 
                 ],
                 [
                     'text' => 'Bulk Add Person to Medal Profile',
                     'url' => 'addmedal/create_bulk',
-                    'icon' => 'far fa-circle nav-icon text-orange',
+                    'icon' => 'far fa-circle nav-icon text-danger',
 
 
                 ],
                 // [
                 //     'text' => 'Person Has Multiple Reference',
                 //     'url' => 'multiples/create',
-                //     'icon' => 'far fa-circle nav-icon text-orange',
+                //     'icon' => 'far fa-circle nav-icon text-secondary',
                 // ],
 
             ],
@@ -368,7 +368,7 @@ return [
 
         [
             'text' => 'Clasp Profile Management',
-            'icon' => 'fa fa fa-medal text-orange',
+            'icon' => 'fa fa fa-star text-orange',
             'submenu' => [
                 [
                     'text' => 'All Person to Clasp Profile',
@@ -411,65 +411,65 @@ return [
         ],
         [
             'text' => 'Master Data',
-            'icon' => 'fa fa fa- fa-cog text-blue',
+            'icon' => 'fa fa fa- fa-database text-secondary',
             'submenu' => [
                 [
                     'text' => 'Rank',
                     'url' => 'ranks',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
 
 
                 ],
                 [
                     'text' => 'Regiment',
                     'url' => 'regiments',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Unit',
                     'url' => 'units',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Medal',
                     'url' => 'medals',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Medal Type',
                     'url' => 'medal_types',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Reference Type',
                     'url' => 'rtypes',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Medal Profile',
                     'url' => 'medal_profiles',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Clasp Profile',
                     'url' => 'clasp_profiles',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
                     'text' => 'Country',
                     'url' => 'countries',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
             ],
         ],
         [
             'text' => 'Reports',
-            'icon' => 'fa fa fa- fa-cog text-blue',
+            'icon' => 'fa fa fa-file-alt fa-cog text-primary',
             'submenu' => [
                 [
                     'text' => 'Person Profile',
                     'url' => 'reports/person_profile',
-                    'icon' => 'far fa-circle nav-icon text-blue',
+                    'icon' => 'far fa-circle nav-icon text-primary',
 
 
                 ],

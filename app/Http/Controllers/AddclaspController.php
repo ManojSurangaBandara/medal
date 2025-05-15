@@ -37,6 +37,18 @@ class AddclaspController extends Controller
             'to' => ['nullable', 'date'],
         ]);
 
+        // Check for existing clasp assignment
+        $existingClasp = Addclasp::where('person_id', $validated['person_id'])
+            ->where('clasp_profile_id', $validated['clasp_profile_id'])
+            ->first();
+
+        if ($existingClasp) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This clasp profile has already been assigned to this person'
+            ]);
+        }
+
         $person = Person::where('id', $validated['person_id'])->first();
         $clasp_profile = ClaspProfile::where('id', $validated['clasp_profile_id'])->first();
 
@@ -49,7 +61,12 @@ class AddclaspController extends Controller
         $validated['is_un'] = $clasp_profile->medal->is_un;
 
         Addclasp::create($validated);
-        return redirect()->route('addclasps.index')->with('success', 'Clasp assignment created successfully.');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Clasp assigned successfully.',
+            'clasp_file' => $clasp_profile->file
+        ]);
     }
 
     public function show(Addclasp $addclasp)

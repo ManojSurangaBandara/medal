@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use App\Models\ClaspProfile;
 
 
 class ReportController extends Controller
@@ -29,7 +30,11 @@ class ReportController extends Controller
 
         $person_addmedals = $person->addmedal;
 
-        return view('reports.person_profile_show', compact('person','person_addmedals'));
+        $clasp_profiles = ClaspProfile::where('status', config('const.MEDAL_PROFILE_STATUS_ACTIVE_VALUE'))
+                    ->with(['rtype', 'medal'])
+                    ->get();
+
+        return view('reports.person_profile_show', compact('person','person_addmedals','clasp_profiles'));
     }
 
 }
