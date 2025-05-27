@@ -14,6 +14,39 @@
                     </div>
                 @endif
 
+                <style>
+                    .alert {
+                        animation: fadeOut 5s forwards;
+                    }
+
+                    @keyframes fadeOut {
+                        0% {
+                            opacity: 1;
+                        }
+
+                        90% {
+                            opacity: 1;
+                        }
+
+                        100% {
+                            opacity: 0;
+                        }
+                    }
+                </style>
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <div class="card mt-3">
                     <div class="card card-teal">
                         <div class="card-header">
@@ -110,7 +143,7 @@
                                 $('.search-result').on('click', function() {
                                     $('#person_visible').val($(this).text().trim());
                                     $('#person_id').val($(this).find('.person_id')
-                                    .val());
+                                        .val());
                                     $('#searchResults').empty();
                                 });
                             } else {

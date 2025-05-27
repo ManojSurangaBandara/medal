@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('addclasp/create_bulk', [AddclaspController::class, 'create_bulk'])->name('addclasp.create_bulk');
     Route::post('addclasp/store_bulk', [AddclaspController::class, 'store_bulk'])->name('addclasp.store_bulk');
+    Route::post('addclasp/store_ajax', [AddclaspController::class, 'store_ajax'])->name('addclasp.store_ajax');
 });
 
 require __DIR__ . '/auth.php';

@@ -27,139 +27,93 @@ class AddclaspController extends Controller
         return view('addclasps.create', compact('clasp_profiles', 'countries'));
     }
 
-    
-public function store(Request $request)
-{
-    $validated = $request->validate([
-        'person_id' => ['required', 'numeric'],
-        'clasp_profile_id' => ['required', 'numeric'],
-        'country_id' => ['nullable', 'numeric'],
-        'from' => ['nullable', 'date'],
-        'to' => ['nullable', 'date'],
-    ]);
 
-    // Check for existing clasp assignment
-    $existingClasp = Addclasp::where('person_id', $validated['person_id'])
-        ->where('clasp_profile_id', $validated['clasp_profile_id'])
-        ->first();
+    public function store(Request $request)
+    {
 
-    if ($existingClasp) {
-        if ($request->routeIs('reports.person_profile_show')) {
+        $validated = $request->validate([
+            'person_id' => ['required', 'numeric'],
+            'clasp_profile_id' => ['required', 'numeric'],
+            'country_id' => ['nullable', 'numeric'],
+            'from' => ['nullable', 'date'],
+            'to' => ['nullable', 'date'],
+        ]);
+
+        // Check for existing clasp assignment
+        $existingClasp = Addclasp::where('person_id', $validated['person_id'])
+            ->where('clasp_profile_id', $validated['clasp_profile_id'])
+            ->first();
+
+        if ($existingClasp) {
+            return redirect()->back()->with('error', 'This clasp profile has already been assigned to this person.');
+        }
+
+        $person = Person::find($validated['person_id']);
+        $clasp_profile = ClaspProfile::find($validated['clasp_profile_id']);
+
+        if (!$person || !$clasp_profile) {
+            return back()->with('error', 'Invalid person or clasp profile.');
+        }
+
+        $validated['medal_id'] = $clasp_profile->medal->id ?? null;
+        $validated['rtype_id'] = $clasp_profile->rtype->id ?? null;
+        $validated['date'] = $clasp_profile->date ?? null;
+        $validated['file'] = $clasp_profile->file ?? null;
+        $validated['person_name'] = $person->name ?? null;
+        $validated['person_rank'] = $person->rank->name ?? null;
+        $validated['is_un'] = $clasp_profile->medal->is_un ?? null;
+
+        Addclasp::create($validated);
+
+        return redirect()->back()->with('success', 'Clasp assigned successfully.');
+    }
+
+    public function store_ajax(Request $request)
+    {
+
+        $validated = $request->validate([
+            'person_id' => ['required', 'numeric'],
+            'clasp_profile_id' => ['required', 'numeric'],
+            'country_id' => ['nullable', 'numeric'],
+            'from' => ['nullable', 'date'],
+            'to' => ['nullable', 'date'],
+        ]);
+
+        // Check for existing clasp assignment
+        $existingClasp = Addclasp::where('person_id', $validated['person_id'])
+            ->where('clasp_profile_id', $validated['clasp_profile_id'])
+            ->first();
+
+        if ($existingClasp) {
             return response()->json([
                 'success' => false,
                 'message' => 'This clasp profile has already been assigned to this person'
             ]);
-        } elseif ($request->routeIs('addclasps.create')) {
-            return redirect()->route('addclasps.create')->with('error', 'This clasp profile has already been assigned to this person.');
         }
-        // Optionally, handle other routes or add a default return
-        return back()->with('error', 'This clasp profile has already been assigned to this person.');
-    }
 
-    $person = Person::find($validated['person_id']);
-    $clasp_profile = ClaspProfile::find($validated['clasp_profile_id']);
+        $person = Person::find($validated['person_id']);
+        $clasp_profile = ClaspProfile::find($validated['clasp_profile_id']);
 
-    if (!$person || !$clasp_profile) {
-        return back()->with('error', 'Invalid person or clasp profile.');
-    }
+        // if (!$person || !$clasp_profile) {
+        //     return back()->with('error', 'Invalid person or clasp profile.');
+        // }
 
-    $validated['medal_id'] = $clasp_profile->medal->id ?? null;
-    $validated['rtype_id'] = $clasp_profile->rtype->id ?? null;
-    $validated['date'] = $clasp_profile->date ?? null;
-    $validated['file'] = $clasp_profile->file ?? null;
-    $validated['person_name'] = $person->name ?? null;
-    $validated['person_rank'] = $person->rank->name ?? null;
-    $validated['is_un'] = $clasp_profile->medal->is_un ?? null;
+        $validated['medal_id'] = $clasp_profile->medal->id ?? null;
+        $validated['rtype_id'] = $clasp_profile->rtype->id ?? null;
+        $validated['date'] = $clasp_profile->date ?? null;
+        $validated['file'] = $clasp_profile->file ?? null;
+        $validated['person_name'] = $person->name ?? null;
+        $validated['person_rank'] = $person->rank->name ?? null;
+        $validated['is_un'] = $clasp_profile->medal->is_un ?? null;
 
-    Addclasp::create($validated);
+        Addclasp::create($validated);
 
-    if ($request->routeIs('reports.person_profile_show')) {
         return response()->json([
             'success' => true,
             'message' => 'Clasp assigned successfully.',
             'clasp_file' => $clasp_profile->file
         ]);
-    } elseif ($request->routeIs('addclasps.create')) {
-        return redirect()->route('addclasps.create')->with('success', 'Clasp assigned successfully.');
     }
-
-    // Default return if needed
-    return back()->with('success', 'Clasp assigned successfully.');
-}
-    // {
-
-
-        
-//         $validated = $request->validate([
-//             'person_id' => ['required', 'numeric'],
-//             'clasp_profile_id' => ['required', 'numeric'],
-//             'country_id' => ['nullable', 'numeric'],
-//             'from' => ['nullable', 'date'],
-//             'to' => ['nullable', 'date'],
-//         ]);
-
-//         // Check for existing clasp assignment
-//         $existingClasp = Addclasp::where('person_id', $validated['person_id'])
-//             ->where('clasp_profile_id', $validated['clasp_profile_id'])
-//             ->first();
-
-//         if ($existingClasp) {
-            
-//            if
-//        ($request->routeIs('reports.person_profile_show')) {
-
-//          return response()->json([
-//                 'success' => false,
-//                 'message' => 'This clasp profile has already been assigned to this person'
-//              ]);
-//             }
-
-//              elseif
-//               ($request->routeIs('addclasps.create')){
-           
-//             return redirect()->route('addclasps.create')->with('success', 'Clasp assigned successfully.');
- 
-         
-            
-//         }
-
-//         $person = Person::where('id', $validated['person_id'])->first();
-//         $clasp_profile = ClaspProfile::where('id', $validated['clasp_profile_id'])->first();
-
-//         $validated['medal_id'] = $clasp_profile->medal->id;
-//         $validated['rtype_id'] = $clasp_profile->rtype->id;
-//         $validated['date'] = $clasp_profile->date;
-//         $validated['file'] = $clasp_profile->file;
-//         $validated['person_name'] = $person->name;
-//         $validated['person_rank'] = $person->rank->name;
-//         $validated['is_un'] = $clasp_profile->medal->is_un;
-
-//         Addclasp::create($validated);
-
-          
-
-
-//        if
-//        ($request->routeIs('reports.person_profile_show')) {
-//          return response()->json([
-//             'success' => true,
-//             'message' => 'Clasp assigned successfully.',
-//             'clasp_file' => $clasp_profile->file
-
-//          ]);
-// }
-//          elseif
-//          ($request->routeIs('addclasps.create')){
-           
-//             return redirect()->route('addclasps.create')->with('success', 'Clasp assigned successfully.');
- 
-//          }
-
-       
-       
-
-//     }
-// }
 
     public function show(Addclasp $addclasp)
     {

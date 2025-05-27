@@ -5,6 +5,25 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
+                <style>
+                    .alert {
+                        animation: fadeOut 5s forwards;
+                    }
+
+                    @keyframes fadeOut {
+                        0% {
+                            opacity: 1;
+                        }
+
+                        90% {
+                            opacity: 1;
+                        }
+
+                        100% {
+                            opacity: 0;
+                        }
+                    }
+                </style>
                 @if (session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif

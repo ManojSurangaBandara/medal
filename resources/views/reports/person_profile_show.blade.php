@@ -196,7 +196,7 @@
 
         function submitClaspForm() {
             $.ajax({
-                url: "{{ route('addclasps.store') }}",
+                url: "{{ route('addclasp.store_ajax') }}",
                 method: 'POST',
                 data: $('#addClaspForm').serialize(),
                 headers: {

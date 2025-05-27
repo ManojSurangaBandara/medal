@@ -75,7 +75,7 @@ class PersonDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('DT_RowIndex')->title('#')->searchable(false)->orderColumn(false)->width(40),
+            Column::make('DT_RowIndex')->title('#')->searchable(false)->orderable(false)->width(40),
             Column::make('service_no'),
             Column::make('eno'),
             Column::make('name'),
