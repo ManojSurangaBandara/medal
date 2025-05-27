@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\DataTables\MedalProfileDatatable;
+use App\DataTables\MedalProfileDataTable;
 use App\Models\MedalProfile;
 use App\Models\Medal;
 use App\Models\Rtype;
@@ -14,7 +14,7 @@ class MedalProfileController extends Controller
      * Display a listing of the resource.
      */
 
-     public function index(MedalProfileDatatable $dataTable)
+     public function index(MedalProfileDataTable $dataTable)
      {
          return $dataTable->render('medal_profiles.index');
      }

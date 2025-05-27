@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b style="color: darkgreen;">MIM_System</b>',
+    'logo' => '<b style="color: darkgreen;">AMIMS</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
