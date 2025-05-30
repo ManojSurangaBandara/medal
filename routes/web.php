@@ -21,6 +21,8 @@ use App\Http\Controllers\ExcelController;
 use App\Models\MedalProfile;
 use App\Http\Controllers\ClaspProfileController;
 use App\Http\Controllers\AddclaspController;
+use App\Http\Controllers\ApplicationFormController;
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -43,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('medals', MedalController::class);
     Route::resource('medal_types', MedalTypeController::class);
+    Route::resource('application_forms', ApplicationFormController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('persons', PersonController::class);

@@ -444,6 +444,11 @@ return [
                     'icon' => 'far fa-circle nav-icon text-secondary',
                 ],
                 [
+                    'text' => 'Application Forms',
+                    'url' => 'application_forms',
+                    'icon' => 'far fa-circle nav-icon text-secondary',
+                ],
+                [
                     'text' => 'Reference Type',
                     'url' => 'rtypes',
                     'icon' => 'far fa-circle nav-icon text-secondary',
