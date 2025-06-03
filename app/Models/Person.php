@@ -73,4 +73,13 @@ class Person extends Authenticatable
     public function addmedal(){
         return $this->hasMany(Addmedal::class,'person_id','id');
     }
+
+    public function addclasp(){
+        return $this->hasMany(Addclasp::class,'person_id','id');
+    }
+
+    public function clasps_profiles()
+    {
+        return $this->hasMany(ClaspProfile::class, 'person_id', 'id');
+    }
 }

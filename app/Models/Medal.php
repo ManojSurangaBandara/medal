@@ -23,6 +23,10 @@ class Medal extends Model
         return $this->hasMany(Addmedal::class);
     }
 
+    public function addclasp(){
+        return $this->hasMany(Addclasp::class);
+    }
+
     public function medal_type(){
         return $this->belongsTo(MedalType::class, 'medal_type_id');
     }
