@@ -4,27 +4,27 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            
+
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
-{{-- 
+{{--
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Rtype') }}                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-right">Add New Rtype</a>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Reference Type') }}                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-right">Add New Rtype</a>
                 </div>
-                
+
                 <div class="card-body">
-                    
+
                     {{-- <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -65,7 +65,7 @@
     @section('plugins.Datatables', true)
     {{ $dataTable->scripts() }}
     @endpush
-    
+
 
 
 
