@@ -63,5 +63,8 @@ class MedalProfile extends Authenticatable
     {
         return $this->belongsTo(Medal::class, 'medal_id');
     }
-    
+    public function add_medals() {
+        return $this->hasMany(Addmedal::class, 'medal_profile_id');
+    }
+
 }

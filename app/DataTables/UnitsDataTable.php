@@ -24,13 +24,14 @@ class UnitsDataTable extends DataTable
         return (new EloquentDataTable($query))
         ->addIndexColumn()
         ->addColumn('action', function ($unitsdatatable) {
-            $btn = '<a href="'.route('units.edit',$unitsdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-            $btn .= '<form  action="' . route('units.destroy', $unitsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
-                            ' . csrf_field() . '
-                                ' . method_field("DELETE") . '
-                            <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
-                            <i class="fa fa-trash-alt"></i></button>
-                            </form> </div>';
+            $btn = '';
+            // $btn .= '<a href="'.route('units.edit',$unitsdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+            // $btn .= '<form  action="' . route('units.destroy', $unitsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+            //                 ' . csrf_field() . '
+            //                     ' . method_field("DELETE") . '
+            //                 <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
+            //                 <i class="fa fa-trash-alt"></i></button>
+            //                 </form> </div>';
             $btn .= '<a href="'.route('units.show', $unitsdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
             return $btn;
         })
@@ -76,12 +77,12 @@ class UnitsDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->searchable(false)->orderable(false)->width(5),
 
-            
+
             // Column::make('id'),
-            
+
             Column::make('unit'),
-           
-          
+
+
 
             Column::make('regiments.regiment')->title('Regiment')->data('regiments.regiment')->searchable(true),
 

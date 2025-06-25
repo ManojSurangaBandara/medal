@@ -79,7 +79,12 @@ class RtypeController extends Controller
 
     public function destroy(Rtype $rtype)
     {
+
+        if ($rtype->medal_profiles()->exists() || $rtype->clasp_profiles()->exists()) {
+            return redirect()->route('rtypes.index')->with('error', 'Cannot delete reference type. It is used in medal profiles or clasp profiles.');
+        }
+
         $rtype->delete();
-        return redirect()->route('rtypes.index')->with('success', 'Rtype deleted successfully!');
+        return redirect()->route('rtypes.index')->with('success', 'Reference Type deleted successfully!');
     }
 }

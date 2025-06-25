@@ -16,10 +16,10 @@ class CountryController extends Controller
     //     $this->middleware('permission:delete_medals')->only('destroy');
 
     // }
-   
+
     public function index(CountriesDataTable $dataTable)
     {
-        
+
         return $dataTable->render('countries.index');
     }
 
@@ -51,8 +51,11 @@ class CountryController extends Controller
     }
 
     public function destroy(Country $country)
-
     {
+        // Check if the country has any medals associated with it
+        if ($country->addmedal()->exists()) {
+            return redirect()->route('countries.index')->with('error', 'Cannot delete country with associated medals.');
+        }
         $country->delete();
         return redirect()->route('countries.index')->with('success', 'Country deleted successfully.');
     }

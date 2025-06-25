@@ -30,4 +30,16 @@ class Medal extends Model
     public function medal_type(){
         return $this->belongsTo(MedalType::class, 'medal_type_id');
     }
+
+    public function medal_profiles(){
+        return $this->hasMany(MedalProfile::class, 'medal_id');
+    }
+
+    public function clasp_profiles(){
+        return $this->hasMany(ClaspProfile::class, 'medal_id');
+    }
+
+    public function application_forms(){
+        return $this->hasMany(ApplicationForm::class, 'medal_id');
+    }
 }

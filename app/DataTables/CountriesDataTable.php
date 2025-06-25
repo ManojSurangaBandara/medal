@@ -24,13 +24,14 @@ class CountriesDataTable extends DataTable
         return (new EloquentDataTable($query))
         ->addIndexColumn()
         ->addColumn('action', function ($countriesdatatable) {
-            $btn = '<a href="'.route('countries.edit',$countriesdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-            $btn .= '<form  action="' . route('countries.destroy', $countriesdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
-            ' . csrf_field() . '
-                ' . method_field("DELETE") . '
-            <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
-            <i class="fa fa-trash-alt"></i></button>
-            </form> </div>';
+            $btn = '';
+            // $btn .= '<a href="'.route('countries.edit',$countriesdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+            // $btn .= '<form  action="' . route('countries.destroy', $countriesdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+            // ' . csrf_field() . '
+            //     ' . method_field("DELETE") . '
+            // <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
+            // <i class="fa fa-trash-alt"></i></button>
+            // </form> </div>';
             $btn .= '<a href="'.route('countries.show', $countriesdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
             return $btn;
         })
@@ -78,7 +79,7 @@ class CountriesDataTable extends DataTable
 
             // Column::make('id'),
             Column::make('country'),
-          
+
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

@@ -42,4 +42,10 @@ class ClaspProfile extends Authenticatable
     {
         return $this->belongsTo(Medal::class, 'medal_id');
     }
+
+    public function add_clasps()
+    {
+        return $this->hasMany(Addclasp::class, 'clasp_profile_id');
+    }
+
 }

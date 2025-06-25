@@ -48,7 +48,7 @@ class ClaspProfileDataTable extends DataTable
                 $btn .= '<a href="' . route('clasp_profiles.edit', $clasp_profile->id) . '" class="btn btn-xs btn-warning"><i class="fa fa-pen"></i></a> ';
                 $btn .= '<form action="' . route('clasp_profiles.destroy', $clasp_profile->id) . '" method="POST" class="d-inline">
                             ' . csrf_field() . method_field("DELETE") . '
-                            <button type="submit" class="btn bg-danger btn-xs"><i class="fa fa-trash-alt"></i></button>
+                            <button type="submit" class="btn bg-danger btn-xs dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-alt"></i></button>
                         </form>';
                 return $btn;
             })

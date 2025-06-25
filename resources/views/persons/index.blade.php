@@ -8,6 +8,10 @@
             @if (session('success'))
                 <div class="alert alert-success" id="success-alert">{{ session('success') }}</div>
             @endif
+
+             @if (session('error'))
+                <div class="alert alert-danger" id="danger-alert">{{ session('error') }}</div>
+            @endif
 {{--
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
@@ -31,6 +35,14 @@
     <script>
         setTimeout(function () {
             let alert = document.getElementById('success-alert');
+            if (alert) {
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = 0;
+                setTimeout(() => alert.remove(), 500); // remove from DOM after fade
+            }
+        }, 3000); // 3 seconds
+        setTimeout(function () {
+            let alert = document.getElementById('danger-alert');
             if (alert) {
                 alert.style.transition = "opacity 0.5s ease";
                 alert.style.opacity = 0;
