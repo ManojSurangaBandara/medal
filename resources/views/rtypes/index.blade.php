@@ -18,7 +18,7 @@
             @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Reference Type') }}                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-right">Add New Rtype</a>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Reference Type') }}                    <a href="{{ route('rtypes.create') }}" class="btn btn-primary float-right">Add New Reference type</a>
                 </div>
 
                 <div class="card-body">

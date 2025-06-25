@@ -14,21 +14,21 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Add Rtype') }}</div>
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __(' Add Reference Type') }}</div>
                 <div class="card-body">
                     <form action="{{ route('rtypes.store') }}" method="POST">
                         @csrf
-                     
+
                         <div class="mb-3">
-                            <label for="">reference type:</label>
+                            <label for="">Reference Type:</label>
                             <input type="text" name="rtype" required class="form-control"/>
                         </div>
-                       
-                       
+
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
-                        
+
                     </form>
                 </div>
                 </div>
@@ -38,5 +38,5 @@
 </div>
 @include('footer')
 @endsection
-     
-                       
+
+
