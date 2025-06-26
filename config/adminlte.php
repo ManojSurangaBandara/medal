@@ -64,7 +64,7 @@ return [
     */
 
     // 'logo' => '<b style="color: darkgreen;">AMIMS</b>',
-    'logo' => '<b style="color: white;">AMIMS</b>',
+    'logo' => '<b style="color: white;">MGIMS</b>',
     // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img' => 'login/img/army_Logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
