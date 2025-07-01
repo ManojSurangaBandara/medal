@@ -32,7 +32,7 @@
                                 <label for="">Rank: </label>
                                 <select name="rank_id" id="rank_id" class="form-control" required>
                                     @foreach ($rank as $rank)
-                                        <option value="{{ $rank->id }}">{{ $rank->name }}</option>
+                                        <option value="{{ $rank->id }}" @if ($rank->id == old('rank_id', $user->rank_id)) selected @endif>{{ $rank->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,7 +41,7 @@
                             <label for="">Name:</label>
                             <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}" required>
 
-                           
+
                         </div>
                         <div class="mb-3">
                             <label for="">Email: </label>
@@ -51,7 +51,7 @@
                                 <label for="">Regiment: </label>
                                 <select name="regiment_id" id="regiment_id" class="form-control" required>
                                     @foreach ($regiment as $regiment)
-                                        <option value="{{ $regiment->id }}">{{ $regiment->regiment }}</option>
+                                        <option value="{{ $regiment->id }}" @if ($regiment->id == old('regiment_id', $user->regiment_id)) selected @endif>{{ $regiment->regiment }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,35 +59,35 @@
                                 <label for="">Unit: </label>
                                 <select name="unit_id" id="unit_id" class="form-control" required>
                                     @foreach ($unit as $unit)
-                                        <option value="{{ $unit->id }}">{{ $unit->unit }}</option>
+                                        <option value="{{ $unit->id }}" @if ($unit->id == old('unit_id', $user->unit_id)) selected @endif>{{ $unit->unit }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             </div>
-                           
+
                             <div class="mb-3">
                                 <label for="">Role: </label>
                                 <select name="role_id" id="role_id" class="form-control" required>
                                     @foreach ($role as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" @if ($role->id == old('role_id', $user->role_id)) selected @endif>{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            
+
                         </div>
                         <div class="mb-3">
                             <label for="">Password: </label>
-                            <input type="text" name="password" id="password" class="form-control" value="{{ old('password', $user->password) }}"  required>
+                            <input type="text" name="password" id="password" class="form-control" value=""  required>
 
                         </div>
-                        
-                       
-                    
-                        
+
+
+
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
-                        
+
                     </form>
                 </div>
                 </div>
@@ -97,5 +97,5 @@
 </div>
 @include('footer')
 @endsection
-     
-                       
+
+
