@@ -18,7 +18,11 @@
 
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Users') }}<a href="{{ route('users.create') }}" class="btn btn-primary float-right">Add New User</a></div>
+                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Users') }}
+                    @can('create_users')
+                        <a href="{{ route('users.create') }}" class="btn btn-primary float-right">Add New User</a>
+                    @endcan
+                </div>
 
                 <div class="card-body">
 

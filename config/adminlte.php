@@ -432,6 +432,7 @@ return [
                     'text' => 'Users',
                     'url' => 'users',
                     'icon' => 'far fa-circle nav-icon text-teal',
+                    'can' => 'user-menu',
                     'active' => [
                         'users*',
                     ],
@@ -440,6 +441,7 @@ return [
                     'text' => 'Permissions',
                     'url' => 'permissions',
                     'icon' => 'far fa-circle nav-icon text-teal',
+                    'can' => 'permissions-menu',
                     'active' => [
                         'permissions*',
                     ],
@@ -448,6 +450,7 @@ return [
                     'text' => 'Roles',
                     'url' => 'roles',
                     'icon' => 'far fa-circle nav-icon text-teal',
+                    'can' => 'roles-menu',
                     'active' => [
                         'roles*',
                     ],

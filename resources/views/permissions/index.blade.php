@@ -10,12 +10,15 @@
             @endif
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Permissions') }}<a href="{{ route('permissions.create') }}" class="btn btn-primary float-right">Add New Permission</a>
+                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Permissions') }}
+                    @can('create_permissions')
+                        <a href="{{ route('permissions.create') }}" class="btn btn-primary float-right">Add New Permission</a>
+                    @endcan
                 </div>
-                
+
                 <div class="card-body">
-                    
-               
+
+
 
             <div class="table-responsive">
             {{ $dataTable->table() }}
@@ -33,7 +36,7 @@
         }
 
     </script> --}}
-   
+
 @push('js')
 @section('plugins.Datatables', true)
 {{ $dataTable->scripts() }}

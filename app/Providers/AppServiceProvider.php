@@ -35,6 +35,15 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('master-data', function ($user) {
             return $user->can('master_data');
         });
+        Gate::define('user-menu', function ($user) {
+            return $user->can('users');
+        });
+        Gate::define('permissions-menu', function ($user) {
+            return $user->can('permissions');
+        });
+        Gate::define('roles-menu', function ($user) {
+            return $user->can('roles');
+        });
 
 
     }
