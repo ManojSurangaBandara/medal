@@ -362,6 +362,7 @@ return [
                     'text' => 'Add Person to Medal Profile',
                     'url' => 'addmedals/create',
                     'icon' => 'far fa-circle nav-icon text-danger',
+                    'can' => 'add-person-to-medal-profile',
                     'active' => [
                         'addmedals/create',
                     ],
@@ -372,6 +373,7 @@ return [
                     'text' => 'Bulk Add Person to Medal Profile',
                     'url' => 'addmedal/create_bulk',
                     'icon' => 'far fa-circle nav-icon text-danger',
+                    'can' => 'bulk-add-person-to-medal-profile',
                     'active' => [
                         'addmedals/create_bulk',
                     ],
@@ -408,6 +410,7 @@ return [
                     'text' => 'Add Person to Clasp Profile',
                     'url' => 'addclasps/create',
                     'icon' => 'far fa-circle nav-icon text-orange',
+                    'can' => 'add-person-to-clasp-profile',
                     'active' => [
                         'addclasps/create',
                     ],
@@ -423,6 +426,7 @@ return [
         [
             'text' => 'User Management',
             'icon' => 'fa fa fa- fa-users text-teal',
+            'can' => 'user-management',
             'submenu' => [
                 [
                     'text' => 'Users',
@@ -453,6 +457,7 @@ return [
         [
             'text' => 'Master Data',
             'icon' => 'fa fa fa- fa-database text-secondary',
+            'can' => 'master-data',
             'submenu' => [
                 [
                     'text' => 'Rank',

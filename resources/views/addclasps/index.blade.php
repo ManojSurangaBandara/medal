@@ -10,8 +10,12 @@
                 <div class="card mt-3">
                     <div class="card card-teal">
                         <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i>
-                            {{ __('Add Person to Clasp Profile') }} <a href="{{ route('addclasps.create') }}"
-                                class="btn btn-primary float-right">Add Person to Clasp Profile</a></div>
+                            {{ __('Add Person to Clasp Profile') }}
+                            @if (auth()->user()->can('create_addclasp'))
+                                <a href="{{ route('addclasps.create') }}"
+                                class="btn btn-primary float-right">Add Person to Clasp Profile</a>
+                            @endif
+                            </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 {{ $dataTable->table() }}

@@ -18,7 +18,12 @@
             @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Person') }}<a href="{{ route('persons.create') }}" class="btn btn-primary float-right">Add New Person</a></div>
+
+                        <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Person') }}
+                        @can('create_person')
+                            <a href="{{ route('persons.create') }}" class="btn btn-primary float-right">Add New Person</a>
+                        @endcan
+                        </div>
 
                 <div class="card-body">
                     {{-- <a href="{{ route('persons.create') }}" class="btn-sm btn-primary float-right">Add New Person</a> --}}

@@ -98,12 +98,14 @@
                                                 @endif
                                             </div>
                                             <div>
-                                                <button type="button" class="btn btn-sm btn-outline-success"
-                                                    data-toggle="modal" data-target="#addClaspModal"
-                                                    data-medal-id="{{ $addmedal->medal_id }}"
-                                                    data-person-id="{{ $person->id }}">
-                                                    <i class="fas fa-plus"></i> Add Clasp
-                                                </button>
+                                                @can('create_addclasp')
+                                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                                        data-toggle="modal" data-target="#addClaspModal"
+                                                        data-medal-id="{{ $addmedal->medal_id }}"
+                                                        data-person-id="{{ $person->id }}">
+                                                        <i class="fas fa-plus"></i> Add Clasp
+                                                    </button>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
