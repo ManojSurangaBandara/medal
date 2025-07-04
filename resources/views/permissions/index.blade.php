@@ -11,9 +11,9 @@
             <div class="card mt-3">
                 <div class="card card-teal">
                 <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Permissions') }}
-                    @can('create_permissions')
+                    {{-- @can('create_permissions')
                         <a href="{{ route('permissions.create') }}" class="btn btn-primary float-right">Add New Permission</a>
-                    @endcan
+                    @endcan --}}
                 </div>
 
                 <div class="card-body">

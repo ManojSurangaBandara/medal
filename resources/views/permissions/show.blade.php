@@ -14,17 +14,7 @@
             <div class="card">
                 <div class="card-header"><strong>{{ $permission->name }}</strong>
                 </div></div>
-               
-                        <li class="list-group-item">
-                            <strong>Created At:</strong> 
-                            {{ $permission->created_at ? $permission->created_at->format('d-m-Y H:i') : 'N/A' }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Updated:</strong> 
-                            {{ $permission->updated_at ? $permission->updated_at->format('d-m-Y H:i') : 'N/A' }}
-                        </li>
-                        
-                        
+
                         {{-- <li class="list-group-item">
                             <strong>Created At:</strong> {{ $user->created_at->format('d-m-Y H:i') }}
                         </li>
@@ -32,7 +22,9 @@
                             <strong>Last Updated:</strong> {{ $user->updated_at->format('d-m-Y H:i') }}
                         </li> --}}
                     </ul>
-                       
+                    <div class="m-4">
+                        <a href="{{ route('permissions.index') }}" class="btn btn-secondary">Back</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,5 +32,5 @@
    </div>
    @include('footer')
    @endsection
-     
-                       
+
+
