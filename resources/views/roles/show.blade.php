@@ -27,34 +27,14 @@
                         @endforelse
                     </ul>
                 </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                       
-                        
-                        <li class="list-group-item">
-                            <strong>Created At:</strong> 
-                            {{ $role->created_at ? $role->created_at->format('d-m-Y H:i') : 'N/A' }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Updated:</strong> 
-                            {{ $role->updated_at ? $role->updated_at->format('d-m-Y H:i') : 'N/A' }}
-                        </li>
-                        
-                        
-                        {{-- <li class="list-group-item">
-                            <strong>Created At:</strong> {{ $user->created_at->format('d-m-Y H:i') }}
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Updated:</strong> {{ $user->updated_at->format('d-m-Y H:i') }}
-                        </li> --}}
-                    </ul>
-                       
-                </div>
+            </div>
+            <div class="m-4">
+                <a href="{{ route('roles.index') }}" class="btn btn-secondary">Back</a>
             </div>
         </div>
     </div>
    </div>
    @include('footer')
    @endsection
-     
-                       
+
+
