@@ -15,6 +15,15 @@ use Maatwebsite\Excel\HeadingRowImport;
 
 class AddclaspController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view_addclasps')->only('index', 'show');
+        $this->middleware('permission:create_addclasps')->only('create', 'store');
+        $this->middleware('permission:edit_addclasps')->only('edit', 'update');
+        $this->middleware('permission:delete_addclasps')->only('destroy');
+
+    }
+
     public function index(AddclaspsDataTable $dataTable)
     {
         return $dataTable->render('addclasps.index');

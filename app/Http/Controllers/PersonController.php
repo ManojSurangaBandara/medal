@@ -17,14 +17,14 @@ use Illuminate\Http\Request;
 
 class PersonController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:view_users')->only('index', 'show');
-    //     $this->middleware('permission:create_users')->only('create', 'store');
-    //     $this->middleware('permission:edit_users')->only('edit', 'update');
-    //     $this->middleware('permission:delete_users')->only('destroy');
+    public function __construct()
+    {
+        $this->middleware('permission:view_persons')->only('index', 'show');
+        $this->middleware('permission:create_persons')->only('create', 'store');
+        $this->middleware('permission:edit_persons')->only('edit', 'update');
+        $this->middleware('permission:delete_persons')->only('destroy');
 
-    // }
+    }
 
     public function index(PersonDataTable $dataTable)
     {

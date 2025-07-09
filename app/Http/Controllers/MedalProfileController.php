@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class MedalProfileController extends Controller
 {
+        public function __construct()
+    {
+        $this->middleware('permission:view_medal_profiles')->only('index', 'show');
+        $this->middleware('permission:create_medal_profiles')->only('create', 'store');
+        $this->middleware('permission:edit_medal_profiles')->only('edit', 'update');
+        $this->middleware('permission:delete_medal_profiles')->only('destroy');
+
+    }
+
     /**
      * Display a listing of the resource.
      */
