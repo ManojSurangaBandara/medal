@@ -76,14 +76,14 @@ class RtypesDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->searchable(false)->orderable(false)->width(5),
 
-            
-            // Column::make('id'),
-            
-            Column::make('rtype'),
-           
-          
 
-           
+            // Column::make('id'),
+
+            Column::make('rtype')->title('Reference Type'),
+
+
+
+
 
             // Column::make('created_at'),
             // Column::make('updated_at'),

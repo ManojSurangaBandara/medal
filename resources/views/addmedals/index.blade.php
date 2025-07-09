@@ -34,8 +34,12 @@
                 <div class="card mt-3">
                     <div class="card card-teal">
                         <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i>
-                            {{ __('Add Person to Medal Profile') }} <a href="{{ route('addmedals.create') }}"
-                                class="btn btn-primary float-right">Add Person to Medal Profile</a></div>
+                            {{ __('Add Person to Medal Profile') }}
+                            @if (auth()->user()->can('create_addmedal'))
+                                <a href="{{ route('addmedals.create') }}"
+                                class="btn btn-primary float-right">Add Person to Medal Profile</a>
+                            @endif
+                        </div>
 
                         <div class="card-body">
 

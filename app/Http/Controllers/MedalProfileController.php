@@ -117,6 +117,11 @@ class MedalProfileController extends Controller
     public function destroy(string $id)
     {
         $medal_profile = MedalProfile::findOrFail($id);
+
+        if($medal_profile->add_medals()->exists()){
+            return redirect()->route('medal_profiles.index')->with('error', 'Cannot delete this medal profile as it is associated with persons');
+        }
+
         $medal_profile->delete();
 
         return redirect()->route('medal_profiles.index')->with('success', 'Medal Profile deleted successfully.');

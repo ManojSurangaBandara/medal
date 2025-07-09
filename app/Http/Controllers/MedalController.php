@@ -93,6 +93,10 @@ class MedalController extends Controller
 
     public function destroy(Medal $medal)
     {
+        if ($medal->medal_profiles()->exists() || $medal->clasp_profiles()->exists() || $medal->application_forms()->exists()) {
+            return redirect()->route('medals.index')->with('error', 'Cannot delete medal. It is used in medal profiles, clasp profiles or application forms.');
+        }
+
         // Delete the image from storage if it exists
         if ($medal->image && Storage::exists('public/' . $medal->image)) {
             Storage::delete('public/' . $medal->image);

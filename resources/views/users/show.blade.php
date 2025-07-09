@@ -45,11 +45,15 @@
                             <li class="list-group-item">
                                 <strong>Active:</strong> {{ $user->active ? 'Yes' : 'No' }}
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
+                <div class="mb-3 ml-3">
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Back</a>
+                </div>
             </div>
+
 
         </div>
     </div>

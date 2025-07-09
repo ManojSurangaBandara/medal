@@ -17,7 +17,7 @@
                         @method('PUT')
                         <div class="mb-3">
                             <label for="">Medal Type:</label>
-                            <input type="text" name="medal_type" id="medal_type" class="form-control" value="{{ old('medal_type', $medal_type->name) }}" required>
+                            <input type="text" name="medal_type" id="medal_type" class="form-control" value="{{ old('medal_type', $medal_type->medal_type) }}" required>
 
                         </div>
 

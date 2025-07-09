@@ -27,15 +27,23 @@ class AddmedalsDataTable extends DataTable
                 return '<a href="' . asset('/storage/' . $addmedalsdatatable->file) . '" target="_blank"><i class="fa fa-download"></i></a>';
             })
             ->addColumn('action', function ($addmedalsdatatable) {
-                $btn = '<a href="' . route('addmedals.edit', $addmedalsdatatable->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-                $btn .= '<form  action="' . route('addmedals.destroy', $addmedalsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
-            ' . csrf_field() . '
-                ' . method_field("DELETE") . '
-            <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
-            <i class="fa fa-trash-alt"></i></button>
-            </form> </div>';
-                $btn .= '<a href="' . route('addmedals.show', $addmedalsdatatable->id) . '" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+                $btn = '';
+                // Check if the user has the 'regimental' role
+                if (auth()->user()->can('edit_addmedal')) {
+                    $btn = '<a href="' . route('addmedals.edit', $addmedalsdatatable->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+                }
+                if (auth()->user()->can('delete_addmedal')) {
+                    $btn .= '<form  action="' . route('addmedals.destroy', $addmedalsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+                ' . csrf_field() . '
+                    ' . method_field("DELETE") . '
+                <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
+                <i class="fa fa-trash-alt"></i></button>
+                </form> </div>';
+                }
+                if (auth()->user()->can('view_addmedal')) {
+                    $btn .= '<a href="' . route('addmedals.show', $addmedalsdatatable->id) . '" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
                 return $btn;
+                }
             })
             ->addColumn('reference_no', function ($row) {
                 return $row->medal_profile->rtype->rtype . '-' . $row->medal_profile->reference_no . '-' . $row->medal_profile->date;

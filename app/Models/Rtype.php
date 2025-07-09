@@ -10,9 +10,9 @@ class Rtype extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'rtype', 
-       
-         
+        'rtype',
+
+
     ];
 
 
@@ -24,6 +24,13 @@ class Rtype extends Model
         return $this->hasMany(Addmedal::class);
     }
 
+    public function medal_profiles(){
+        return $this->hasMany(MedalProfile::class);
+    }
+
+    public function clasp_profiles(){
+        return $this->hasMany(ClaspProfile::class);
+    }
 
 
 }

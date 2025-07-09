@@ -95,6 +95,13 @@ class PersonController extends Controller
 
     public function destroy(Person $person)
     {
+        // $person->addmedal()->delete();
+        // $person->addclasp()->delete();
+
+        // Check if person has related medals or clasps
+        if ($person->addmedal()->exists() || $person->addclasp()->exists()) {
+            return redirect()->route('persons.index')->with('error', 'Cannot delete person with associated medals or clasps.');
+        }
         $person->delete();
         return redirect()->route('persons.index')->with('success', 'Person deleted successfully.');
     }

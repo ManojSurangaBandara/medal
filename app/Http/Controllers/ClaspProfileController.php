@@ -89,6 +89,9 @@ class ClaspProfileController extends Controller
     public function destroy(string $id)
     {
         $clasp_profile = ClaspProfile::findOrFail($id);
+        if($clasp_profile->add_clasps()->exists()){
+            return redirect()->route('clasp_profiles.index')->with('error', 'Cannot delete this clasp profile as it is associated with persons');
+        }
         $clasp_profile->delete();
         return redirect()->route('clasp_profiles.index')->with('success', 'Clasp Profile deleted successfully.');
     }

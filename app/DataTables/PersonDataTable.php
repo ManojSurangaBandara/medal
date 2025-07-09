@@ -24,18 +24,25 @@ class PersonDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addIndexColumn()
             ->addColumn('action', function ($person) {
-                $btn = '<a href="' . route('persons.edit', $person->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-                $btn .= '<form  action="' . route('persons.destroy', $person->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
-                            ' . csrf_field() . '
-                                ' . method_field("DELETE") . '
-                            <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
-                            <i class="fa fa-trash-alt"></i></button>
-                            </form> </div>';
-                $btn .= '<a href="'.route('persons.show', $person->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+                $btn = '';
+                // Check if the user has the 'regimental' role
+                if (auth()->user()->can('edit_person')) {
+                    $btn = '<a href="' . route('persons.edit', $person->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+                }
+                if (auth()->user()->can('delete_person')) {
+                    $btn .= '<form  action="' . route('persons.destroy', $person->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+                                ' . csrf_field() . '
+                                    ' . method_field("DELETE") . '
+                                <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
+                                <i class="fa fa-trash-alt"></i></button>
+                                </form> </div>';
+                }
+                if (auth()->user()->can('view_person')) {
+                    $btn .= '<a href="' . route('persons.show', $person->id) . '" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+                }
                 return $btn;
             })
             ->rawColumns(['action']);
-
     }
 
     /**
@@ -45,7 +52,16 @@ class PersonDataTable extends DataTable
      */
     public function query(Person $model): QueryBuilder
     {
-        return $model->with(['rank','regiment','unit']);
+        // $user = auth()->user();
+
+        // // If user has 'regimental' role, filter by their regiment_id
+        // if ($user && $user->hasRole('regimental')) {
+        //     return $model->with(['rank', 'regiment', 'unit'])
+        //         ->where('regiment_id', $user->regiment_id);
+        // }
+
+        // Otherwise, show all persons
+        return $model->with(['rank', 'regiment', 'unit']);
     }
 
     /**
@@ -54,19 +70,19 @@ class PersonDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('person-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    // ->dom('Bfrtip')
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset')
-                    ]);
+            ->setTableId('person-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->orderBy(1)
+            ->selectStyleSingle()
+            // ->dom('Bfrtip')
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset')
+            ]);
     }
 
     /**

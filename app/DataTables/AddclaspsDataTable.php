@@ -17,13 +17,22 @@ class AddclaspsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addIndexColumn()
             ->addColumn('action', function ($addclaspsdatatable) {
-                $btn = '<a href="' . route('addclasps.edit', $addclaspsdatatable->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" ><i class="fa fa-pen"></i></a> ';
-                $btn .= '<form action="' . route('addclasps.destroy', $addclaspsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
-                    ' . csrf_field() . method_field("DELETE") . '
-                    <button type="submit" class="btn bg-danger btn-xs" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
-                    <i class="fa fa-trash-alt"></i></button>
-                    </form>';
-                $btn .= '<a href="' . route('addclasps.show', $addclaspsdatatable->id) . '" class="btn btn-xs btn-info" data-toggle="tooltip" title="View" ><i class="fa fa-eye"></i></a> ';
+                $btn = '';
+                // Check if the user has the 'regimental' role
+                $btn = '';
+                if (auth()->user()->can('edit_addclasp')){
+                    $btn = '<a href="' . route('addclasps.edit', $addclaspsdatatable->id) . '" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" ><i class="fa fa-pen"></i></a> ';
+                }
+                if (auth()->user()->can('delete_addclasp')) {
+                    $btn .= '<form action="' . route('addclasps.destroy', $addclaspsdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+                        ' . csrf_field() . method_field("DELETE") . '
+                        <button type="submit" class="btn bg-danger btn-xs" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
+                        <i class="fa fa-trash-alt"></i></button>
+                        </form>';
+                }
+                if (auth()->user()->can('view_addclasp')){
+                    $btn .= '<a href="' . route('addclasps.show', $addclaspsdatatable->id) . '" class="btn btn-xs btn-info" data-toggle="tooltip" title="View" ><i class="fa fa-eye"></i></a> ';
+                }
                 return $btn;
             })
             ->addColumn('reference_no', function ($row) {

@@ -57,6 +57,10 @@ class MedalTypeController extends Controller
 
     public function destroy(MedalType $medal_type)
     {
+        if($medal_type->medals()->exists()){
+            return redirect()->route('medal_types.index')->with('error', 'Cannot delete this medal type as it is associated with existing medals.');
+        }
+
         $medal_type->delete();
         return redirect()->route('medal_types.index');
     }

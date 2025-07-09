@@ -23,7 +23,7 @@ class RolesDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
         ->addIndexColumn()
-     
+
         // ->editColumn('created_at', function ($notification) {
         //     return Carbon::parse($notification->created_at)->format('Y-m-d H:i:s');
         // })
@@ -32,14 +32,21 @@ class RolesDataTable extends DataTable
         // })
 
         ->addColumn('action', function ($rolesdatatable) {
-            $btn = '<a href="'.route('roles.edit',$rolesdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-            $btn .= '<form  action="' . route('roles.destroy', $rolesdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+            $btn = '';
+            if(auth()->user()->can('edit_roles')) {
+                $btn = '<a href="'.route('roles.edit',$rolesdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+            }
+            if(auth()->user()->can('delete_roles')) {
+                $btn .= '<form  action="' . route('roles.destroy', $rolesdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
                             ' . csrf_field() . '
                                 ' . method_field("DELETE") . '
                             <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
                             <i class="fa fa-trash-alt"></i></button>
                             </form> </div>';
-            $btn .= '<a href="'.route('roles.show', $rolesdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+            }
+            if(auth()->user()->can('view_roles')) {
+                $btn .= '<a href="'.route('roles.show', $rolesdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+            }
             return $btn;
         })
         ->rawColumns(['action']);
@@ -52,10 +59,10 @@ class RolesDataTable extends DataTable
      */
     public function query(Role $model): QueryBuilder
     {
-       
+
         return $model->newQuery()->with([
             //  'permission',
-             
+
         ]);
     }
 
@@ -89,7 +96,7 @@ class RolesDataTable extends DataTable
             Column::make('DT_RowIndex')->title('#')->searchable(false)->orderable(false)->width(5),
             // Column::make('id'),
             Column::make('name')->title('Name')->data('name')->searchable(true),
-            Column::make('guard_name'),            
+            Column::make('guard_name'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')

@@ -5,41 +5,37 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+{{--
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
-            @endif
+            @endif --}}
             <div class="card mt-3">
                 <div class="card card-teal">
-                <div class="card-header"><i class="nav-icon fa fa fa-users nav-icon"></i> {{ __('Roles') }}
-                    @can('create_roles')
-                        <a href="{{ route('roles.create') }}" class="btn btn-primary float-right">Add New Role</a>
-                    @endcan
+                <div class="card-header"><i class="nav-icon fa fa fa-cogs nav-icon"></i> {{ __('Application Form') }}                    <a href="{{ route('application_forms.create') }}" class="btn btn-primary float-right">Add New Application Form</a>
                 </div>
 
                 <div class="card-body">
 
 
-
             <div class="table-responsive">
             {{ $dataTable->table() }}
+
             </div>
-        </div>
+            </div>
             </div>
         </div>
     </div>
     @include('footer')
     @endsection
-    {{-- <script>
-        function confirmDelete(){
-            return confirm('Are You sure you want to delete this record? This action be undone.');
 
-        }
+     @push('js')
+     @section('plugins.Datatables', true)
+     {{ $dataTable->scripts() }}
+     @endpush
 
-    </script> --}}
 
-@push('js')
-@section('plugins.Datatables', true)
-{{ $dataTable->scripts() }}
-@endpush
 
 

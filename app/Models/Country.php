@@ -15,7 +15,7 @@ class Country extends Model
 
     ];
 
-    // public function addmedal(){
-    //     return $this->hasMany(Addmedal::class);
-    // }
+    public function addmedal(){
+        return $this->hasMany(Addmedal::class);
+    }
 }

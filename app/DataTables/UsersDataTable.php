@@ -44,14 +44,21 @@ class UsersDataTable extends DataTable
         // })
 
         ->addColumn('action', function ($usersdatatable) {
-            $btn = '<a href="'.route('users.edit',$usersdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
-            $btn .= '<form  action="' . route('users.destroy', $usersdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
+            $btn = '';
+            if(auth()->user()->can('edit_users')) {
+                $btn = '<a href="'.route('users.edit',$usersdatatable->id).'" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit User" ><i class="fa fa-pen"></i></a> ';
+            }
+            if(auth()->user()->can('delete_users')) {
+                $btn .= '<form  action="' . route('users.destroy', $usersdatatable->id) . '" method="POST" class="d-inline" onsubmit="return confirmDelete()" >
                             ' . csrf_field() . '
                                 ' . method_field("DELETE") . '
                             <button type="submit"  class="btn bg-danger btn-xs  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700" onclick="return confirm(\'Do you need to delete this\');" data-toggle="tooltip" title="Delete">
                             <i class="fa fa-trash-alt"></i></button>
                             </form> </div>';
-            $btn .= '<a href="'.route('users.show', $usersdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+            }
+            if(auth()->user()->can('view_users')) {
+                $btn .= '<a href="'.route('users.show', $usersdatatable->id).'" class="btn btn-xs btn-info" data-toggle="tooltip" title="View User" ><i class="fa fa-eye"></i></a> ';
+            }
             return $btn;
         })
         ->rawColumns(['active', 'action','role.name']);
@@ -64,7 +71,7 @@ class UsersDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-       
+
         return $model->newQuery()->with([
              'role',
              'ranks',
@@ -110,7 +117,7 @@ class UsersDataTable extends DataTable
             Column::make('units.unit')->title('Unit')->data('units.unit')->searchable(true),
             Column::make('role.name')->title('Role')->data('role.name')->searchable(true),
             Column::make('active')->title('Active')->data('active')->searchable(true),
-           
+
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')
