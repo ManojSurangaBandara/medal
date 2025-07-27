@@ -8,6 +8,7 @@ use App\Models\Regiment;  // Import Location Model
 
 use App\Models\Rank;
 use App\Models\Unit;
+use Illuminate\Validation\Rule;
 // use App\DataTables\PersonsDataTable;
 // use Illuminate\Support\Facades\Hash;
 
@@ -43,7 +44,12 @@ class PersonController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'service_no' => 'required|string|max:255|unique:persons,service_no',
+            'service_no' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('persons')->whereNull('deleted_at'),
+            ],
             'eno' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'rank_id' => 'required|numeric',
