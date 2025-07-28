@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div>
-                                    <i class="fas fa-medal bg-blue"></i>
+                                    <i class="fas fa-medal bg-blue" data-toggle="tooltip" title="Medal: {{ $addmedal->medal_profile->rtype->rtype }}-{{ $addmedal->medal_profile->reference_no }}-{{ $addmedal->medal_profile->date }}"></i>
                                     <div class="timeline-item shadow-sm">
 
                                         @php
