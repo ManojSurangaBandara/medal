@@ -36,7 +36,7 @@
                                 <input type="hidden" name="service_no" id="service_no" value="{{ $person->service_no }}" />
                                 <div class="mb-3">
                                     <label for="">E No:</label>
-                                    <input type="text" name="eno" required class="form-control" id="eno"
+                                    <input type="text" name="eno" class="form-control" id="eno"
                                         value="{{ $person->eno }}" />
                                 </div>
                                 <div class="mb-3">

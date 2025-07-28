@@ -50,7 +50,6 @@ class PersonController extends Controller
                 'max:255',
                 Rule::unique('persons')->whereNull('deleted_at'),
             ],
-            'eno' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'rank_id' => 'required|numeric',
             'regiment_id' => 'required|numeric',
@@ -84,7 +83,7 @@ class PersonController extends Controller
     {
         $validated = $request->validate([
             'service_no' => 'required|string|max:255',
-            'eno' => 'required|string|max:255',
+            // 'eno' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'rank_id' => 'required|numeric',
             'regiment_id' => 'required|numeric',

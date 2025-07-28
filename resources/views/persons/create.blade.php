@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="">E No:</label>
-                                    <input type="text" name="eno" required class="form-control" id="eno" />
+                                    <input type="text" name="eno" class="form-control" id="eno" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Rank: </label>
