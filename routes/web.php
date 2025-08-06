@@ -22,7 +22,8 @@ use App\Models\MedalProfile;
 use App\Http\Controllers\ClaspProfileController;
 use App\Http\Controllers\AddclaspController;
 use App\Http\Controllers\ApplicationFormController;
-
+use App\Http\Controllers\MedalDataOldController;
+use App\Http\Controllers\UploadMedalDataController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -73,6 +74,11 @@ Route::middleware('auth')->group(function () {
     Route::get('addclasp/create_bulk', [AddclaspController::class, 'create_bulk'])->name('addclasp.create_bulk');
     Route::post('addclasp/store_bulk', [AddclaspController::class, 'store_bulk'])->name('addclasp.store_bulk');
     Route::post('addclasp/store_ajax', [AddclaspController::class, 'store_ajax'])->name('addclasp.store_ajax');
+
+    Route::get('medal_data_old/upload', [MedalDataOldController::class, 'showUploadForm'])->name('medal_data_old.upload_form');
+    Route::post('medal_data_old/upload', [MedalDataOldController::class, 'upload'])->name('medal_data_old.upload');
+    Route::get('medal_data_old', [MedalDataOldController::class, 'index'])->name('medal_data_old.index');
+
 });
 
 require __DIR__ . '/auth.php';

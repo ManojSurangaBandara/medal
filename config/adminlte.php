@@ -545,8 +545,16 @@ return [
                 ],
             ],
         ],
-
-
+        [
+            'text' => 'Upload Old Data',
+            'url' => 'medal_data_old/upload',
+            'icon' => 'fa fa-upload',
+        ],
+        [
+            'text' => 'View Old Data',
+            'url' => 'medal_data_old',
+            'icon' => 'fa fa-eye',
+        ],
         [
             'text' => 'Reports',
             'icon' => 'fa fa fa-file-alt fa-cog text-primary',
