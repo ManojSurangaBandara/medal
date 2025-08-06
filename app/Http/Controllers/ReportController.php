@@ -11,15 +11,15 @@ use App\Models\ClaspProfile;
 class ReportController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('permission:view_reports')->only('index', 'show');
-        $this->middleware('permission:create_reports')->only('create', 'store');
-        $this->middleware('permission:edit_reports')->only('edit', 'update');
-        $this->middleware('permission:delete_reports')->only('destroy');
+    // public function __construct()
+    // {
+    //     $this->middleware('permission:view_reports')->only('index', 'show');
+    //     $this->middleware('permission:create_reports')->only('create', 'store');
+    //     $this->middleware('permission:edit_reports')->only('edit', 'update');
+    //     $this->middleware('permission:delete_reports')->only('destroy');
 
-    }
-   
+    // }
+
 
     public function person_profile()
     {

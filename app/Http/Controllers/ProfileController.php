@@ -11,16 +11,16 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('permission:view_profiles')->only('index', 'show');
-        $this->middleware('permission:create_profiles')->only('create', 'store');
-        $this->middleware('permission:edit_profiles')->only('edit', 'update');
-        $this->middleware('permission:delete_profiles')->only('destroy');
+    // public function __construct()
+    // {
+    //     $this->middleware('permission:view_profiles')->only('index', 'show');
+    //     $this->middleware('permission:create_profiles')->only('create', 'store');
+    //     $this->middleware('permission:edit_profiles')->only('edit', 'update');
+    //     $this->middleware('permission:delete_profiles')->only('destroy');
 
-    }
+    // }
 
-    
+
     /**
      * Display the user's profile form.
      */

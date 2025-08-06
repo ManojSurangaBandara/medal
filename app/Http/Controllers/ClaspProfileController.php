@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 class ClaspProfileController extends Controller
 {
 
-     public function __construct()
-    {
-        $this->middleware('permission:view_clasp_profiles')->only('index', 'show');
-        $this->middleware('permission:create_clasp_profiles')->only('create', 'store');
-        $this->middleware('permission:edit_clasp_profiles')->only('edit', 'update');
-        $this->middleware('permission:delete_clasp_profiles')->only('destroy');
+    //  public function __construct()
+    // {
+    //     $this->middleware('permission:view_clasp_profiles')->only('index', 'show');
+    //     $this->middleware('permission:create_clasp_profiles')->only('create', 'store');
+    //     $this->middleware('permission:edit_clasp_profiles')->only('edit', 'update');
+    //     $this->middleware('permission:delete_clasp_profiles')->only('destroy');
 
-    }
+    // }
 
     public function index(ClaspProfileDataTable $dataTable)
     {
