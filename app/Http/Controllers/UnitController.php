@@ -11,10 +11,10 @@ class UnitController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view_units')->only('index', 'show');
-        $this->middleware('permission:create_units')->only('create', 'store');
-        $this->middleware('permission:edit_units')->only('edit', 'update');
-        $this->middleware('permission:delete_units')->only('destroy');
+        // $this->middleware('permission:view_units')->only('index', 'show');
+        // $this->middleware('permission:create_units')->only('create', 'store');
+        // $this->middleware('permission:edit_units')->only('edit', 'update');
+        // $this->middleware('permission:delete_units')->only('destroy');
 
     }
     // public function index()
@@ -38,15 +38,15 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            
+
             'unit' => 'required|string|max:255',
             'regiment_id' => ['required', 'numeric'],
-               
+
             ]);
-        
-           
+
+
             $unit = Unit::create($validated)->with('success', 'Unit created successfully!');
-    
+
 
         // Unit::create($request->all());
         return redirect()->route('units.index');
@@ -67,10 +67,10 @@ class UnitController extends Controller
     public function update(Request $request, Unit $unit)
     {
         $user_detail = $request->validate([
-            
+
             'unit' => 'required|string|max:255',
             'regiment_id' => ['required', 'numeric'],
-           
+
         ]);
 
         $unit->update($user_detail);

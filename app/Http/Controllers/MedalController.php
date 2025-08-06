@@ -14,10 +14,10 @@ class MedalController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view_medals')->only('index', 'show');
-        $this->middleware('permission:create_medals')->only('create', 'store');
-        $this->middleware('permission:edit_medals')->only('edit', 'update');
-        $this->middleware('permission:delete_medals')->only('destroy');
+        // $this->middleware('permission:view_medals')->only('index', 'show');
+        // $this->middleware('permission:create_medals')->only('create', 'store');
+        // $this->middleware('permission:edit_medals')->only('edit', 'update');
+        // $this->middleware('permission:delete_medals')->only('destroy');
     }
 
     public function index(MedalsDataTable $dataTable)

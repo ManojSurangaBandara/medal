@@ -10,16 +10,16 @@ class RegimentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view_regiments')->only('index', 'show');
-        $this->middleware('permission:create_regiments')->only('create', 'store');
-        $this->middleware('permission:edit_regiments')->only('edit', 'update');
-        $this->middleware('permission:delete_regiments')->only('destroy');
+        // $this->middleware('permission:view_regiments')->only('index', 'show');
+        // $this->middleware('permission:create_regiments')->only('create', 'store');
+        // $this->middleware('permission:edit_regiments')->only('edit', 'update');
+        // $this->middleware('permission:delete_regiments')->only('destroy');
 
     }
-  
+
     public function index(RegimentsDataTable $dataTable)
     {
-        
+
         return $dataTable->render('regiments.index');
     }
 

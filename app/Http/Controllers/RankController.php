@@ -10,16 +10,16 @@ class RankController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view_ranks')->only('index', 'show');
-        $this->middleware('permission:create_ranks')->only('create', 'store');
-        $this->middleware('permission:edit_ranks')->only('edit', 'update');
-        $this->middleware('permission:delete_ranks')->only('destroy');
+        // $this->middleware('permission:view_ranks')->only('index', 'show');
+        // $this->middleware('permission:create_ranks')->only('create', 'store');
+        // $this->middleware('permission:edit_ranks')->only('edit', 'update');
+        // $this->middleware('permission:delete_ranks')->only('destroy');
 
     }
-   
+
     public function index(RanksDataTable $dataTable)
     {
-        
+
         return $dataTable->render('ranks.index');
     }
 

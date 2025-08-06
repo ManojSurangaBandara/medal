@@ -13,10 +13,10 @@ class ApplicationFormController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view_application_forms')->only('index', 'show');
-        $this->middleware('permission:create_application_forms')->only('create', 'store');
-        $this->middleware('permission:edit_application_forms')->only('edit', 'update');
-        $this->middleware('permission:delete_application_forms')->only('destroy');
+        // $this->middleware('permission:view_application_forms')->only('index', 'show');
+        // $this->middleware('permission:create_application_forms')->only('create', 'store');
+        // $this->middleware('permission:edit_application_forms')->only('edit', 'update');
+        // $this->middleware('permission:delete_application_forms')->only('destroy');
     }
 
     public function index(ApplicationFormsDataTable $dataTable)
