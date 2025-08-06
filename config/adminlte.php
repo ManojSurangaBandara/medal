@@ -362,7 +362,7 @@ return [
                     'text' => 'Add Person to Medal Profile',
                     'url' => 'addmedals/create',
                     'icon' => 'far fa-circle nav-icon text-danger',
-                    'can' => 'add-person-to-medal-profile',
+                    // 'can' => 'add-person-to-medal-profile',
                     'active' => [
                         'addmedals/create',
                     ],
@@ -373,7 +373,7 @@ return [
                     'text' => 'Bulk Add Person to Medal Profile',
                     'url' => 'addmedal/create_bulk',
                     'icon' => 'far fa-circle nav-icon text-danger',
-                    'can' => 'bulk-add-person-to-medal-profile',
+                    // 'can' => 'bulk-add-person-to-medal-profile',
                     'active' => [
                         'addmedals/create_bulk',
                     ],
@@ -410,7 +410,7 @@ return [
                     'text' => 'Add Person to Clasp Profile',
                     'url' => 'addclasps/create',
                     'icon' => 'far fa-circle nav-icon text-orange',
-                    'can' => 'add-person-to-clasp-profile',
+                    // 'can' => 'add-person-to-clasp-profile',
                     'active' => [
                         'addclasps/create',
                     ],
@@ -426,13 +426,13 @@ return [
         [
             'text' => 'User Management',
             'icon' => 'fa fa fa- fa-users text-teal',
-            'can' => 'user-management',
+            // 'can' => 'user-management',
             'submenu' => [
                 [
                     'text' => 'Users',
                     'url' => 'users',
                     'icon' => 'far fa-circle nav-icon text-teal',
-                    'can' => 'user-menu',
+                    // 'can' => 'user-menu',
                     'active' => [
                         'users*',
                     ],
@@ -441,7 +441,7 @@ return [
                     'text' => 'Permissions',
                     'url' => 'permissions',
                     'icon' => 'far fa-circle nav-icon text-teal',
-                    'can' => 'permissions-menu',
+                    // 'can' => 'permissions-menu',
                     'active' => [
                         'permissions*',
                     ],
@@ -450,7 +450,7 @@ return [
                     'text' => 'Roles',
                     'url' => 'roles',
                     'icon' => 'far fa-circle nav-icon text-teal',
-                    'can' => 'roles-menu',
+                    // 'can' => 'roles-menu',
                     'active' => [
                         'roles*',
                     ],
@@ -460,7 +460,7 @@ return [
         [
             'text' => 'Master Data',
             'icon' => 'fa fa fa- fa-database text-secondary',
-            'can' => 'master-data',
+
             'submenu' => [
                 [
                     'text' => 'Rank',
@@ -545,6 +545,8 @@ return [
                 ],
             ],
         ],
+
+
         [
             'text' => 'Reports',
             'icon' => 'fa fa fa-file-alt fa-cog text-primary',
@@ -608,18 +610,18 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
