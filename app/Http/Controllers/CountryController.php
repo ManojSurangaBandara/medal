@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:view_medals')->only('index', 'show');
-    //     $this->middleware('permission:create_medals')->only('create', 'store');
-    //     $this->middleware('permission:edit_medals')->only('edit', 'update');
-    //     $this->middleware('permission:delete_medals')->only('destroy');
+    public function __construct()
+    {
+        $this->middleware('permission:view_countries')->only('index', 'show');
+        $this->middleware('permission:create_countries')->only('create', 'store');
+        $this->middleware('permission:edit_countries')->only('edit', 'update');
+        $this->middleware('permission:delete_countries')->only('destroy');
 
-    // }
-
+    }
+   
     public function index(CountriesDataTable $dataTable)
     {
 

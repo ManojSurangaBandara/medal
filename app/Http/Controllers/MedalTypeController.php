@@ -8,6 +8,15 @@ use App\Models\MedalType;
 
 class MedalTypeController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('permission:view_medal_types')->only('index', 'show');
+        $this->middleware('permission:create_medal_types')->only('create', 'store');
+        $this->middleware('permission:edit_medal_types')->only('edit', 'update');
+        $this->middleware('permission:delete_medal_types')->only('destroy');
+
+    }
+   
     /**
      * Display a listing of the resource.
      */

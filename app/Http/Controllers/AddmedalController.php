@@ -18,14 +18,14 @@ use Illuminate\Http\Request;
 
 class AddmedalController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:view_users')->only('index', 'show');
-    //     $this->middleware('permission:create_users')->only('create', 'store');
-    //     $this->middleware('permission:edit_users')->only('edit', 'update');
-    //     $this->middleware('permission:delete_users')->only('destroy');
+    public function __construct()
+    {
+        $this->middleware('permission:view_addmedals')->only('index', 'show');
+        $this->middleware('permission:create_addmedals')->only('create', 'store');
+        $this->middleware('permission:edit_addmedals')->only('edit', 'update');
+        $this->middleware('permission:delete_addmedals')->only('destroy');
 
-    // }
+    }
 
     public function index(AddmedalsDataTable $dataTable)
     {

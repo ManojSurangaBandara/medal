@@ -15,14 +15,14 @@ use Illuminate\Http\Request;
 
 class MultipleController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:view_users')->only('index', 'show');
-    //     $this->middleware('permission:create_users')->only('create', 'store');
-    //     $this->middleware('permission:edit_users')->only('edit', 'update');
-    //     $this->middleware('permission:delete_users')->only('destroy');
+    public function __construct()
+    {
+        $this->middleware('permission:view_multiples')->only('index', 'show');
+        $this->middleware('permission:create_multiples')->only('create', 'store');
+        $this->middleware('permission:edit_multiples')->only('edit', 'update');
+        $this->middleware('permission:delete_multiples')->only('destroy');
 
-    // }
+    }
    
     public function index()
     {
