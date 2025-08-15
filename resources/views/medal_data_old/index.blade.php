@@ -4,6 +4,13 @@
 <div class="container">
     <h2>Medal Data - Old</h2>
 
+    <div class="d-flex justify-content-end mb-2">
+        <form action="{{ route('medal_data_old.clear') }}" method="POST" onsubmit="return confirm('Are you sure you want to clear all data?');">
+            @csrf
+            <button type="submit" class="btn btn-danger">Clear Data</button>
+        </form>
+    </div>
+
     @php
         // Map attribute keys to custom column names
         $customColumns = [

@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::get('medal_data_old/upload', [MedalDataOldController::class, 'showUploadForm'])->name('medal_data_old.upload_form');
     Route::post('medal_data_old/upload', [MedalDataOldController::class, 'upload'])->name('medal_data_old.upload');
     Route::get('medal_data_old', [MedalDataOldController::class, 'index'])->name('medal_data_old.index');
-
+    Route::post('medal_data_old/clear', [MedalDataOldController::class, 'clear'])->name('medal_data_old.clear');
 });
 
 require __DIR__ . '/auth.php';

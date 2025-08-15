@@ -32,4 +32,10 @@ class MedalDataOldController extends Controller
         $medalDataOld = MedalDataOld::paginate(25000); // Use pagination, 20 per page
         return view('medal_data_old.index', compact('medalDataOld'));
     }
+
+    public function clear()
+    {
+        MedalDataOld::truncate();
+        return redirect()->route('medal_data_old.index')->with('success', 'All data cleared successfully.');
+    }
 }
