@@ -4,33 +4,29 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-10">
-
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                @if (session('status'))
-                    <div class="alert alert-success">{{ session('status') }}</div>
-                @endif
-
-                <div class="card card-teal shadow-sm">
-                    <div class="card-header">
-                        <h3 class="card-title">
+                <div class="card card-primary shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3 class="card-title mb-0">
                             <i class="fas fa-user"></i> {{ __('Person Profile') }}
                         </h3>
+
+                    </div>
+                    <div class="d-flex justify-content-end">
+
+                        <form action="{{ route('reports.person_profile_old_show') }}" method="POST" class="mr-2 mt-2">
+                            @csrf
+                            <input type="hidden" name="service_no" value="{{ $person->service_no }}">
+                            <button type="submit" class="btn-sm btn-info">
+                                <i class="fas fa-history"></i> Old Data
+                            </button>
+                        </form>
                     </div>
                     <div class="card-body">
                         <div class="mb-4">
                             <h5><strong>Service No:</strong> {{ $person->service_no }}</h5>
-                            <h5><strong>Rank:</strong> {{ $person->rank->name }}</h5>
+                            <h5><strong>Rank:</strong> {{ $person->rank ? $person->rank->name : '' }}</h5>
                             <h5><strong>Name:</strong> {{ $person->name }}</h5>
-                            <h5><strong>Regiment:</strong> {{ $person->regiment->regiment }}</h5>
+                            <h5><strong>Regiment:</strong> {{ $person->regiment ? $person->regiment->regiment : '' }}</h5>
                         </div>
 
                         <hr>
@@ -46,7 +42,8 @@
                                 </div>
 
                                 <div>
-                                    <i class="fas fa-medal bg-blue" data-toggle="tooltip" title="Medal: {{ $addmedal->medal_profile->rtype->rtype }}-{{ $addmedal->medal_profile->reference_no }}-{{ $addmedal->medal_profile->date }}"></i>
+                                    <i class="fas fa-medal bg-blue" data-toggle="tooltip"
+                                        title="Medal: {{ $addmedal->medal_profile->rtype->rtype }}-{{ $addmedal->medal_profile->reference_no }}-{{ $addmedal->medal_profile->date }}"></i>
                                     <div class="timeline-item shadow-sm">
 
                                         @php
@@ -240,6 +237,14 @@
         }
     </script>
 @endsection
+{{--
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+            });
+        }
+    </script>
+@endsection --}}
 
 @section('meta')
     <meta name="csrf-token" content="{{ csrf_token() }}">

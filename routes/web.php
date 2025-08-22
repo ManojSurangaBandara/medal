@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('persons/search/ajax', [PersonController::class, 'person_search_ajax'])->name('persons.search.ajax');
     Route::get('reports/person_profile', [ReportController::class, 'person_profile'])->name('reports.person_profile');
     Route::post('reports/person_profile_show', [ReportController::class, 'person_profile_show'])->name('reports.person_profile_show');
+    Route::get('reports/person_profile_old', [ReportController::class, 'person_profile_old'])->name('reports.person_profile_old');
+    Route::post('reports/person_profile_old_show', [ReportController::class, 'person_profile_old_show'])->name('reports.person_profile_old_show');
 
     Route::get('addmedal/create_bulk', [AddmedalController::class, 'create_bulk'])->name('addmedal.create_bulk');
     Route::post('addmedal/store_bulk', [AddmedalController::class, 'store_bulk'])->name('addmedal.store_bulk');

@@ -10,10 +10,7 @@ class Regiment extends Model
     use SoftDeletes;
 
     protected $table = 'regiments';
-    protected $fillable = [
-        'regiment',
-
-    ];
+    protected $fillable = ['regiment'];
 
     public function user()
     {
@@ -24,7 +21,7 @@ class Regiment extends Model
     {
         return $this->hasmany(Person::class);
     }
-     public function units()
+    public function units()
     {
         return $this->hasMany(Unit::class, 'unit_id');
     }

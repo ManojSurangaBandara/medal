@@ -151,9 +151,9 @@ class PersonController extends Controller
                     'id' => $person->id,
                     'service_no' => $person->service_no,
                     'name' => $person->name,
-                    'rank_id' => $person->rank->name,
-                    'regiment_id' => $person->regiment->regiment,
-                    'eno' => $person->eno
+                    'rank_id' => $person->rank ? $person->rank->name : '',
+                    'regiment_id' => $person->regiment ? $person->regiment->regiment : '',
+                    'eno' => $person->eno ?? ''
                 ];
             });
 

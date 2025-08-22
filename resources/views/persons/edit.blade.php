@@ -42,9 +42,17 @@
                                 <div class="mb-3">
                                     <label for="">Rank:</label>
                                     <select name="rank_id" id="rank_id" class="form-control" required>
+                                        <option value=""></option>
                                         @foreach ($ranks as $rank)
-                                            <option value="{{ $rank->id }}"
-                                                @if ($rank->id == $person->rank->id) selected @endif>{{ $rank->name }}
+                                            @php
+                                                if($person->rank){
+                                                    $selected = $rank->id == $person->rank->id ? 'selected' : '';
+                                                } else {
+                                                    $selected = '';
+                                                }
+                                            @endphp
+                                            <option value="{{ $rank->id }}" {{ $selected }}>
+                                                {{ $rank->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -59,9 +67,17 @@
                                         <div class="col-md-6">
                                             <label for="">Regiment: </label>
                                             <select name="regiment_id" id="regiment_id" class="form-control" required>
+                                                <option value=""></option>
+
                                                 @foreach ($regiments as $regiment)
-                                                    <option value="{{ $regiment->id }}"
-                                                        @if ($regiment->id == $person->regiment->id) selected @endif>
+                                                @php
+                                                if($person->regiment){
+                                                    $selected = $regiment->id == $person->regiment->id ? 'selected' : '';
+                                                } else {
+                                                    $selected = '';
+                                                }
+                                                @endphp
+                                                    <option value="{{ $regiment->id }}" {{ $selected }} >
                                                         {{ $regiment->regiment }}</option>
                                                 @endforeach
                                             </select>
@@ -69,9 +85,16 @@
                                         <div class="col-md-6">
                                             <label for="">Unit: </label>
                                             <select name="unit_id" id="unit_id" class="form-control" required>
+                                                <option value=""></option>
                                                 @foreach ($units as $unit)
-                                                    <option value="{{ $unit->id }}"
-                                                        @if ($unit->id == $person->unit->id) selected @endif>
+                                                    @php
+                                                    if($person->unit){
+                                                        $selected = $unit->id == $person->unit->id ? 'selected' : '';
+                                                    } else {
+                                                        $selected = '';
+                                                    }
+                                                    @endphp
+                                                    <option value="{{ $unit->id }}" {{ $selected }}>
                                                         {{ $unit->unit }}</option>
                                                 @endforeach
                                             </select>

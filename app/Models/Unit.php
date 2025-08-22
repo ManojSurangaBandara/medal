@@ -12,7 +12,7 @@ class Unit extends Model
     protected $table = 'units';
     protected $fillable = [
         'unit',
-        'regiment_id'
+        'regiment_id',
 
     ];
 

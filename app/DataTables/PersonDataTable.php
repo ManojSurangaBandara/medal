@@ -23,6 +23,15 @@ class PersonDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addIndexColumn()
+            ->addColumn('rank_name', function ($person) {
+                return $person->rank?->name ?? '';
+            })
+            ->addColumn('regiment_name', function ($person) {
+                return $person->regiment?->regiment ?? '';
+            })
+            ->addColumn('unit_name', function ($person) {
+                return $person->unit?->unit ?? '';
+            })
             ->addColumn('action', function ($person) {
                 $btn = '';
                 // Check if the user has the 'regimental' role
@@ -95,9 +104,9 @@ class PersonDataTable extends DataTable
             Column::make('service_no'),
             Column::make('eno'),
             Column::make('name'),
-            Column::make('rank.name')->title('Rank'),
-            Column::make('regiment.regiment')->title('Regiment'),
-            Column::make('unit.unit')->title('Unit'),
+            Column::make('rank_name')->title('Rank'),
+            Column::make('regiment_name')->title('Regiment'),
+            Column::make('unit_name')->title('Unit'),
             Column::make('doe')->title('Date of Enlistment'),
             Column::computed('action')
                 ->exportable(false)

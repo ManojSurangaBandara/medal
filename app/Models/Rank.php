@@ -10,10 +10,7 @@ class Rank extends Model
     use SoftDeletes;
 
     protected $table = 'ranks';
-    protected $fillable = [
-        'name',
-
-    ];
+    protected $fillable = ['name'];
 
 
 
@@ -25,6 +22,4 @@ class Rank extends Model
     {
         return $this->hasMany(person::class);
     }
-
-
 }

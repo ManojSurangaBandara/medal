@@ -82,4 +82,6 @@ class Person extends Authenticatable
     {
         return $this->hasMany(ClaspProfile::class, 'person_id', 'id');
     }
+
+    
 }

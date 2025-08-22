@@ -572,6 +572,16 @@ return [
                     ],
 
                 ],
+                [
+                    'text' => 'Person Profile Old',
+                    'url' => 'reports/person_profile_old',
+                    'icon' => 'far fa-circle nav-icon text-primary',
+                    'active' => [
+                        'reports/person_profile_old',
+                        'reports/person_profile_old_show',
+                    ],
+
+                ],
             ],
         ],
 

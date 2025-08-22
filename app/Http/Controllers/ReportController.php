@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\ClaspProfile;
+use App\Models\MedalDataOld;
 
 
 
@@ -33,7 +34,7 @@ class ReportController extends Controller
             'service_no' => 'required|string|max:255',
         ]);
 
-        $validated['service_no'];
+        $validated['service_no'] = trim($validated['service_no']);
 
         $person = Person::where('service_no', $validated['service_no'])->with(['addmedal'])->first();
         if (!$person) {
@@ -43,10 +44,36 @@ class ReportController extends Controller
         $person_addmedals = $person->addmedal;
 
         $clasp_profiles = ClaspProfile::where('status', config('const.MEDAL_PROFILE_STATUS_ACTIVE_VALUE'))
-                    ->with(['rtype', 'medal'])
-                    ->get();
+            ->with(['rtype', 'medal'])
+            ->get();
 
-        return view('reports.person_profile_show', compact('person','person_addmedals','clasp_profiles'));
+        return view('reports.person_profile_show', compact('person', 'person_addmedals', 'clasp_profiles'));
     }
 
+    public function person_profile_old()
+    {
+        return view('reports.person_profile_old');
+    }
+
+    public function person_profile_old_show(Request $request)
+    {
+        $validated = $request->validate([
+            'service_no' => 'required|string|max:255',
+        ]);
+
+        //service_no trim
+        $validated['service_no'] = trim($validated['service_no']);
+
+        $person = Person::where('service_no', $validated['service_no'])->with(['addmedal'])->first();
+        // dd($validated['service_no']);
+        if (!$person) {
+            return redirect()->back()->with('error', 'Person not found.');
+        }
+
+
+        $service_no = $validated['service_no'];
+        $medalDataOld = MedalDataOld::where('service_no', $service_no)->get(); // Changed from paginate() to get()
+
+        return view('reports.person_profile_old_show', compact('medalDataOld', 'service_no', 'person'));
+    }
 }
